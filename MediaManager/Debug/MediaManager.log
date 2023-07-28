@@ -1,0 +1,19 @@
+﻿cl : command line warning D9035: option 'GZ' has been deprecated and will be removed in a future release
+cl : command line warning D9036: use 'RTC1' instead of 'GZ'
+  Library.cpp
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(68,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(85,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.h(29,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(107,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(197,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(225,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(239,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(254,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(286,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(325,20): warning C4018: '<': signed/unsigned mismatch
+  MediaManager.vcxproj -> C:\Users\vky\source\テスト\MediaManager\Debug\MediaManager.exe
