@@ -1,11 +1,11 @@
 #pragma once
 #include "FsHelpers.h"
 
-size_t WriteFunction(void* ptr, size_t size, size_t nmemb, std::string* data);
-size_t ImageWriteFunction(char* ptr, size_t size, size_t nmemb, void* userdata);
+size_t CurlWriteFunction(void* ptr, size_t size, size_t nmemb, std::string* data);
+size_t CurlImageWriteFunction(char* ptr, size_t size, size_t nmemb, void* userdata);
 
 /// <summary>
-/// A collection of HTTP (get) helper functions
+/// A collection of HTTP (GET) helper functions
 /// </summary>
 namespace HTTP {
 	struct Response {

@@ -173,6 +173,7 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="FsHelpers.cpp" />
     <ClCompile Include="HTTP.cpp" />
+    <ClCompile Include="ImageInfoPanel.cpp" />
     <ClCompile Include="imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -215,11 +216,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="InfoPanel.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathHelper.cpp" />
-    <ClCompile Include="MenuAction.cpp" />
     <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="Metadata.cpp" />
     <ClCompile Include="MetadataCache.cpp" />
@@ -238,7 +237,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="PosterInfoPanel.cpp" />
+    <ClCompile Include="MetadataInfoPanel.cpp" />
     <ClCompile Include="PlaceholderInfoPanel.cpp" />
     <ClCompile Include="PlayFileAction.cpp" />
     <ClCompile Include="simple_types.cpp" />
@@ -250,6 +249,7 @@
     <ClInclude Include="defines.h" />
     <ClInclude Include="FsHelpers.h" />
     <ClInclude Include="HTTP.h" />
+    <ClInclude Include="ImageInfoPanel.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
@@ -269,7 +269,7 @@
     <ClInclude Include="MetadataCache.h" />
     <ClInclude Include="PathManager.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PosterInfoPanel.h" />
+    <ClInclude Include="MetadataInfoPanel.h" />
     <ClInclude Include="PlaceholderInfoPanel.h" />
     <ClInclude Include="PlayFileAction.h" />
     <ClInclude Include="resource.h" />

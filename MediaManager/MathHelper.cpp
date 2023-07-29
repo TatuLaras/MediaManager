@@ -25,7 +25,7 @@ namespace MathHelpers {
     {
         return value1 > value2 ? value1 : value2;
     }
-    int Wrap(int value, int min, int max)
+    int Repeat(int value, int min, int max)
     {
         if (value < 0) return max;
         if (value > max) return 0;

@@ -3,34 +3,37 @@
 
 namespace MediaManager
 {
+	// App state
 	MenuItem* root_item;
 	static int tree_depth = 0;
 	static int maxDepth;
+	static bool main_window_focused = true;
 
+	// Input field buffers
 	static char tmdb_key[256];
 	static char movie_folder[256];
 	static char tv_folder[256];
 	static char video_player_command[256];
-
 	static unsigned int tmdb_id;
 
+	// Window and modal is open states
 	static bool show_options = false;
 	static bool show_options_last_frame = false;
 	static bool open_custom_search = false;
-
-	static bool main_window_focused = true;
+	static bool open_no_player_modal = false;
 
 	// Quirks of imgui
 	const ImU8 u8_one = 1;
 	const ImU16 u16_one = 1;
 
 
-
-
+	// ----- These are called from main.cpp -----
 
 	void Init() {
 		ScanLibrary();
 		LoadFonts();
+
+		open_no_player_modal = Config::video_player_command.size() == 0;
 	}
 
 	void Terminate() {
@@ -49,12 +52,9 @@ namespace MediaManager
 
 		if (show_options_last_frame && !show_options) ImGui::SetWindowFocus("main");
 		show_options_last_frame = show_options;
-
-
-		// Memory safety
-		if (_heapchk() != _HEAPOK)
-			DebugBreak();
 	}
+
+	// --------------------------
 
 
 
@@ -64,7 +64,7 @@ namespace MediaManager
 	void ScanLibrary() {
 		if (!Config::IsInitialized()) InitConfig();
 		root_item = new MenuItem("Root");
-		Library::GenerateMenuTree(root_item);
+		Library::StartGeneratingMenuTree(root_item);
 	}
 
 	void LoadFonts() {
@@ -72,8 +72,8 @@ namespace MediaManager
 		ImGuiIO& io = ImGui::GetIO();
 		std::string font_path = PathManager::GetBaseResourceFolder() + mm_SLASH + mm_FONT_USED;
 
-		if(FsHelpers::PathExists(font_path))
-			io.Fonts->AddFontFromFileTTF(font_path.c_str(),Config::font_size, nullptr, io.Fonts->GetGlyphRangesJapanese());
+		if (FsHelpers::PathExists(font_path))
+			io.Fonts->AddFontFromFileTTF(font_path.c_str(), Config::font_size, nullptr, io.Fonts->GetGlyphRangesJapanese());
 	}
 
 	void InitConfig() {
@@ -86,6 +86,7 @@ namespace MediaManager
 		strcpy_s(tv_folder, Config::tv_folder.c_str());
 		strcpy_s(video_player_command, Config::video_player_command.c_str());
 	}
+
 
 
 
@@ -116,7 +117,7 @@ namespace MediaManager
 
 		ImGui::End();
 
-		RenderPopup();
+		RenderPopups();
 		RenderCustomIdBindingModal();
 
 		if (!Library::movie_thread_done || !Library::tv_thread_done)
@@ -125,6 +126,8 @@ namespace MediaManager
 		if (show_options) RenderOptionsWindow(&show_options);
 
 	}
+
+
 
 	void RenderMainMenuBar() {
 		MenuItem* current = GetCurrent();
@@ -157,7 +160,7 @@ namespace MediaManager
 			}
 
 			if (current->role != MenuItemRole::Navigation && ImGui::BeginMenu("Item")) {
-				const char* watched_label = current->GetWatched() ? "Mark as unwatched" : "Mark as watched";
+				const char* watched_label = current->IsWatched() ? "Mark as unwatched" : "Mark as watched";
 				if (ImGui::MenuItem(watched_label, "Ctrl+W"))
 					current->ToggleWatched();
 
@@ -176,6 +179,8 @@ namespace MediaManager
 		}
 	}
 
+
+
 	void RenderMenuTable() {
 		// Style settings
 		ImGuiTableFlags table_flags =
@@ -185,42 +190,47 @@ namespace MediaManager
 			ImGuiTableFlags_NoHostExtendX |
 			ImGuiTableFlags_SizingFixedFit
 			;
+
 		ImGui::PushStyleVar(ImGuiStyleVar_CellPadding, ImVec2(10, 3));
-
 		// New table
-		if (ImGui::BeginTable("table", maxDepth, table_flags, ImVec2(-FLT_MIN, -FLT_MIN)))
+		if (!ImGui::BeginTable("table", maxDepth, table_flags, ImVec2(-FLT_MIN, -FLT_MIN))) {
+			ImGui::PopStyleVar();
+			return;
+		}
+
+		// Loop over rows and columns
+		for (int row = 0; row < root_item->MaxTreeWidth(); row++)
 		{
-			// Loop over rows and columns
-			for (int row = 0; row < root_item->MaxTreeWidth(); row++)
-			{
-				ImGui::TableNextRow();
+			ImGui::TableNextRow();
 
-				for (int col = 0; col < maxDepth; col++) {
-					ImGui::TableSetColumnIndex(col);
+			for (int col = 0; col < maxDepth; col++) {
+				ImGui::TableSetColumnIndex(col);
 
-					// Corresponding menu item to the cell we're currently defining
-					MenuItem* current = root_item->SelectedSubitem(col)->GetRowItem(row);
+				// Corresponding menu item to the cell we're currently defining
+				MenuItem* current = root_item->SelectedSubitem(col)->GetRowItem(row);
 
-					// Empty cell
-					if (current == nullptr) continue;
+				// Empty cell
+				if (current == nullptr) continue;
 
-					// Set params for cell rendering
-					current->selected =
-						root_item->SelectedSubitem(col)->selected_subitem_index == row;
+				// Set params for cell rendering
+				current->selected =
+					root_item->SelectedSubitem(col)->selected_subitem_index == row;
 
-					current->actively_selected =
-						col == tree_depth && current->selected;
+				current->actively_selected =
+					col == tree_depth && current->selected;
 
-					// Render cell
-					current->Render();
-
-				}
+				// Render cell
+				current->Render();
 
 			}
-			ImGui::EndTable();
+
 		}
+
+		ImGui::EndTable();
 		ImGui::PopStyleVar();
 	}
+
+
 
 	void RenderInfoPanel() {
 
@@ -231,7 +241,9 @@ namespace MediaManager
 
 	}
 
-	void RenderPopup() {
+
+
+	void RenderPopups() {
 		if (TMDB::tmdb_general_error_to_handle) {
 			TMDB::tmdb_general_error_to_handle = false;
 			ImGui::OpenPopup("TMDB error");
@@ -240,6 +252,11 @@ namespace MediaManager
 		if (TMDB::key_error_to_handle) {
 			TMDB::key_error_to_handle = false;
 			ImGui::OpenPopup("TMDB key invalid");
+		}
+
+		if (open_no_player_modal) {
+			open_no_player_modal = false;
+			ImGui::OpenPopup("Video player command missing");
 		}
 
 		if (ImGui::BeginPopupModal("TMDB error", NULL, ImGuiWindowFlags_AlwaysAutoResize))
@@ -264,7 +281,18 @@ namespace MediaManager
 			}
 			ImGui::EndPopup();
 		}
+
+		if (ImGui::BeginPopupModal("Video player command missing", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			ImGui::Text("You haven't set a video player command.\nGo to Menu > Options to change it.");
+			ImGui::SetItemDefaultFocus();
+			if (ImGui::Button("OK", ImVec2(120, 0))) {
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::EndPopup();
+		}
 	}
+
 
 
 	void RenderOptionsWindow(bool* open) {
@@ -290,7 +318,7 @@ namespace MediaManager
 
 			ImGui::InputScalar("Menu item label max length", ImGuiDataType_U16, &Config::label_max_length, &u8_one);
 
-			ImGui::Checkbox("Download larger images", &Config::large_images);
+			ImGui::Checkbox("Download larger images", &Config::use_large_images);
 			ImGui::TextDisabled("(takes up more disk space)");
 
 			ImGui::Checkbox("Show episode numbers", &Config::show_sublabels);
@@ -303,6 +331,7 @@ namespace MediaManager
 		}
 		ImGui::End();
 	}
+
 
 
 	void RenderCustomIdBindingModal() {
@@ -326,11 +355,13 @@ namespace MediaManager
 		}
 	}
 
+
+
 	void RenderLoadingOverlay()
 	{
 		const float PAD = 10.0f;
 		const ImGuiViewport* viewport = ImGui::GetMainViewport();
-		ImVec2 work_pos = viewport->WorkPos; // Use work area to avoid menu-bar/task-bar, if any!
+		ImVec2 work_pos = viewport->WorkPos;
 		ImVec2 work_size = viewport->WorkSize;
 		ImVec2 window_pos, window_pos_pivot;
 		window_pos.x = work_pos.x + work_size.x - PAD;
@@ -352,6 +383,8 @@ namespace MediaManager
 		}
 		ImGui::End();
 	}
+
+
 
 
 
@@ -405,10 +438,11 @@ namespace MediaManager
 			tree_depth--;
 
 		if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
-			// Perform menu item action if there is one, else navigate the tree as normal
-			if (GetCurrent()->PerformAction()) {
+			if (GetCurrent()->PerformMenuAction()) {
 				current->SetWatched(true);
-				if (inside_menu_item != nullptr) inside_menu_item->NextSubitem();
+				// Move to next item on tv shows
+				if (inside_menu_item != nullptr
+					&& inside_menu_item->label != "Movies") inside_menu_item->NextSubitem();
 			}
 			else
 				tree_depth++;
@@ -426,7 +460,6 @@ namespace MediaManager
 			if (inside_menu_item != nullptr && ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_DownArrow)) ||
 				ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_S)))
 				inside_menu_item->NextSubitem();
-
 		}
 
 	}
@@ -445,16 +478,19 @@ namespace MediaManager
 		inside_menu_item->DeleteSelectedSubitem();
 	}
 
+
 	void UnHideAll() {
 		MetadataCache::UnHideAll();
 		RefreshLibrary();
 	}
+
 
 	// TODO come up with something better
 	bool CurrentIsMovie() {
 		MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
 		return inside_menu_item->label == "Movies";
 	}
+
 
 	bool CurrentIsTVShow() {
 		MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
@@ -466,8 +502,9 @@ namespace MediaManager
 		return root_item->SelectedSubitem(tree_depth)->SelectedSubitem();
 	}
 
+
 	void RefreshLibrary() {
-		if (!Library::CanScan()) return;
+		if (!Library::ReadyForScanning()) return;
 
 		MenuItem* old = root_item;
 		root_item = new MenuItem("root");
@@ -475,14 +512,15 @@ namespace MediaManager
 		ScanLibrary();
 	}
 
+
 	void EmptyMetadataCache() {
 		FsHelpers::WipeFolder(PathManager::GetBaseDataFolder(mm_SUBFOLDER_METADATA));
 		RefreshLibrary();
 	}
 
+
 	void EmptyImageCache() {
 		FsHelpers::WipeFolder(PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE));
 	}
-
 
 }

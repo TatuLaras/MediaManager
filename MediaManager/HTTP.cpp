@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "HTTP.h"
 
-size_t WriteFunction(void* ptr, size_t size, size_t nmemb, std::string* data) {
+size_t CurlWriteFunction(void* ptr, size_t size, size_t nmemb, std::string* data) {
 	data->append((char*)ptr, size * nmemb);
 	return size * nmemb;
 }
 
-size_t ImageWriteFunction(char* ptr, size_t size, size_t nmemb, void* userdata)
+size_t CurlImageWriteFunction(char* ptr, size_t size, size_t nmemb, void* userdata)
 {
 	std::ofstream* out = static_cast<std::ofstream*>(userdata);
 	size_t nbytes = size * nmemb;
@@ -23,7 +23,7 @@ namespace HTTP {
 
 		curl_easy_setopt(session, CURLOPT_CUSTOMREQUEST, "GET");
 		curl_easy_setopt(session, CURLOPT_WRITEDATA, &response_string);
-		curl_easy_setopt(session, CURLOPT_WRITEFUNCTION, WriteFunction);
+		curl_easy_setopt(session, CURLOPT_WRITEFUNCTION, CurlWriteFunction);
 		curl_easy_setopt(session, CURLOPT_URL, url.c_str());
 
 		curl_easy_setopt(session, CURLOPT_HTTPHEADER, headers);
@@ -46,7 +46,7 @@ namespace HTTP {
 		if (session)
 		{
 			curl_easy_setopt(session, CURLOPT_URL, url);
-			curl_easy_setopt(session, CURLOPT_WRITEFUNCTION, ImageWriteFunction);
+			curl_easy_setopt(session, CURLOPT_WRITEFUNCTION, CurlImageWriteFunction);
 			curl_easy_setopt(session, CURLOPT_WRITEDATA, &output_file);
 			res = curl_easy_perform(session);
 			curl_easy_cleanup(session);

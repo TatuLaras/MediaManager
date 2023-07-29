@@ -30,7 +30,7 @@ namespace MediaManager
     void RenderCustomIdBindingModal();
     void RenderLoadingOverlay();
     void RenderOptionsWindow(bool* open);
-    void RenderPopup();
+    void RenderPopups();
 
     void HandleKeyboardInput();
 

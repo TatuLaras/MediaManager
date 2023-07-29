@@ -19,10 +19,11 @@ namespace MetadataCache {
 		}
 
 
-		Cache(metadata_identifier, metadata);
+		Store(metadata_identifier, metadata);
 	}
 
-	bool TryGet(std::string metadata_identifier, Metadata* out_metadata)
+
+	bool Retrieve(std::string metadata_identifier, Metadata* out_metadata)
 	{
 		std::string raw = FsHelpers::ReadFileContents(GetFilePath(metadata_identifier));
 		if (raw.size() == 0) return false;
@@ -34,7 +35,7 @@ namespace MetadataCache {
 		return true;
 	}
 
-	void Cache(std::string metadata_identifier, Metadata* metadata)
+	void Store(std::string metadata_identifier, Metadata* metadata)
 	{
 		nlohmann::json json;
 		metadata->SerializeJSON(json);
@@ -95,7 +96,7 @@ namespace MetadataCache {
 		AddLineToFile(metadata_identifier, hidden_list_file);
 	}
 
-	bool IsHidden(std::string metadata_identifier) {
+	bool IsMarkedHidden(std::string metadata_identifier) {
 		return FileContainsLine(metadata_identifier, PathManager::GetBaseDataFolder(mm_SUBFOLDER_OTHER) + mm_SLASH + "hidden");
 	}
 

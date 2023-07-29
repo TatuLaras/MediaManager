@@ -9,5 +9,5 @@ namespace MathHelpers {
     int Max(int value1, int value2);
     float Max(float value1, float value2);
 
-    int Wrap(int value, int min, int max);
+    int Repeat(int value, int min, int max);
 }

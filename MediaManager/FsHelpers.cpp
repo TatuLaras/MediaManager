@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "FsHelpers.h"
 
+
 std::string FsHelpers::ReadFileContents(std::string file_path) {
 	return ReadFileContents(ToPath(file_path));
 }
@@ -21,10 +22,14 @@ std::string FsHelpers::ReadFileContents(std::filesystem::path file_path) {
 	return read_string;
 }
 
+
+
 std::filesystem::path FsHelpers::ToPath(std::string file_path) {
 	std::u8string utf8_string(file_path.cbegin(), file_path.cend());
 	return std::filesystem::path(utf8_string);
 }
+
+
 
 bool FsHelpers::PathExists(std::string& file_path)
 {
@@ -37,11 +42,14 @@ bool FsHelpers::PathExists(std::filesystem::path& file_path)
 }
 
 
+
 std::string FsHelpers::WideToMultibyte(std::wstring str)
 {
 	std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
 	return myconv.to_bytes(str);
 }
+
+
 
 void FsHelpers::WipeFolder(std::string cache_path)
 {

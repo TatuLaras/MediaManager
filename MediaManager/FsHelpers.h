@@ -1,14 +1,14 @@
 #pragma once
 
 /// <summary>
-/// A collection of miscellaneous filesystem-related helper functions used all over the codebase
+/// A collection of miscellaneous filesystem-related helper functions
 /// </summary>
 namespace FsHelpers
 {
 	std::string ReadFileContents(std::string file_path);
 	std::string ReadFileContents(std::filesystem::path file_path);
 	/// <summary>
-	/// Converts a string into a path object
+	/// Converts a (utf8) string into a path object
 	/// </summary>
 	std::filesystem::path ToPath(std::string file_path);
 	bool PathExists(std::string& file_path);

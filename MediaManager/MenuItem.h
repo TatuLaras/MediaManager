@@ -20,41 +20,52 @@ class MenuItem {
 public:
     std::string label = "";
     std::string sublabel = "";
+    
     /// <summary>
     /// All menu items "under" this one in the menu tree
     /// </summary>
     std::vector<MenuItem*> subitems;
     int selected_subitem_index = 0;
-    MenuAction* action = nullptr;
+
+    MenuItemRole role = MenuItemRole::Navigation;
     bool selected;
     bool watched;
     bool actively_selected;
-    MenuItemRole role = MenuItemRole::Navigation;
+    
     std::string filename = "";
     std::string metadata_identifier = "";
+    
     InfoPanel* infopanel = nullptr;
+    MenuAction* action = nullptr;
+
 
     MenuItem(std::string label);
     MenuItem(std::string label, std::string sublabel);
     ~MenuItem();
-    MenuItem* AddItem(MenuItem* item);
     MenuItem* AddItem(std::string item_label);
     MenuItem* AddItem(std::string item_label, std::string sublabel);
-    void IndexToBounds();
+    
+    /// <summary>
+    /// Navigates to the next subitem inside this one in the menu tree
+    /// </summary>
     void NextSubitem();
+    /// <summary>
+    /// Navigates to the previous subitem inside this one in the menu tree
+    /// </summary>
     void PreviousSubitem();
+
     /// <summary>
     /// Render the table cell for this MenuItem
     /// </summary>
     void Render();
-    void RenderCheckmark(int spacing_top = 0);
+
+
     void RenderInfoPanel() {
-        if(infopanel != nullptr)
-            infopanel->Render();
+        if(infopanel) infopanel->Render();
     }
 
-    bool PerformAction() {
-        if (action != nullptr) {
+    bool PerformMenuAction() {
+        if (action) {
             action->Perform();
             return true;
         }
@@ -62,34 +73,13 @@ public:
         return false;
     }
 
-    bool GetWatched() {
-        if (role == MenuItemRole::Watchable) return watched;
-        if (role == MenuItemRole::Navigation) return false;
+    bool IsWatched();
 
-        int sum = 0;
-        for (int i = 0; i < subitems.size(); i++) 
-            sum += (int)subitems[i]->GetWatched();
-        
-        return sum == subitems.size();
-    }
 
-    void SetWatched(bool b) {
-        if (role == MenuItemRole::Navigation) return;
-        if (role == MenuItemRole::Watchable) {
-            if(watched != b)
-                MetadataCache::SetWatched(filename, b);
-
-            watched = b;
-            return;
-        }
-
-        // Else set all subitems
-        for (int i = 0; i < subitems.size(); i++)
-            subitems[i]->SetWatched(b);
-    }
+    void SetWatched(bool b);
 
     void ToggleWatched() {
-        SetWatched(!GetWatched());
+        SetWatched(!IsWatched());
     }
 
     void Hide() {
@@ -98,20 +88,27 @@ public:
     }
 
     MenuItem* SelectedSubitem();
+    MenuItem* SelectedSubitem(int depth);
+    /// <summary>
+    /// Returns a pointer to the last added subitem. 
+    /// Only call immediately after AddItem as a shortcut.
+    /// Not thread-safe.
+    /// </summary>
+    MenuItem* Last();
     void DeleteSelectedSubitem();
 
-    MenuItem* SelectedSubitem(int depth);
-
-    MenuItem* Last();
-
     int MaxTreeWidth();
-
-    std::string GetRowLabel(int index);
+    int MaxTreeDepth();
 
     MenuItem* GetRowItem(int index);
-    int MaxTreeDepth();
 
 private:
     std::string Truncate(std::string label);
+    void IndexToBounds();
+    bool SubItemsAreWatched();
+
+    void RenderCheckmark(int spacing_top = 0);
+    void RenderBackground();
+    void RenderLabels();
 };
 

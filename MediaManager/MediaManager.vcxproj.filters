@@ -69,19 +69,13 @@
     <ClCompile Include="Library.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MenuAction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlayFileAction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InfoPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlaceholderInfoPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PosterInfoPanel.cpp">
+    <ClCompile Include="MetadataInfoPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MetadataCache.cpp">
@@ -97,6 +91,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PathManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageInfoPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,7 +167,7 @@
     <ClInclude Include="PlaceholderInfoPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PosterInfoPanel.h">
+    <ClInclude Include="MetadataInfoPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
@@ -195,6 +192,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageInfoPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

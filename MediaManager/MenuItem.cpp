@@ -4,11 +4,13 @@
 MenuItem::MenuItem(std::string item_label) {
     label = item_label;
 }
+
 MenuItem::MenuItem(std::string item_label, std::string item_sublabel)
 {
     label = item_label;
     sublabel = item_sublabel;
 }
+
 MenuItem::~MenuItem()
 {
     for (int i = 0; i < subitems.size(); i++) 
@@ -18,11 +20,7 @@ MenuItem::~MenuItem()
     delete infopanel;
 }
 
-MenuItem* MenuItem::AddItem(MenuItem* item)
-{
-    subitems.push_back(item);
-    return item;
-}
+
 
 MenuItem* MenuItem::AddItem(std::string item_label)
 {
@@ -38,10 +36,8 @@ MenuItem* MenuItem::AddItem(std::string item_label, std::string sublabel)
     return menuItem;
 }
 
-void MenuItem::IndexToBounds() {
-    selected_subitem_index = 
-        MathHelpers::Wrap(selected_subitem_index, 0, subitems.size() - 1);
-}
+
+
 
 void MenuItem::NextSubitem()
 {
@@ -55,53 +51,55 @@ void MenuItem::PreviousSubitem()
     IndexToBounds();
 }
 
+
+
 void MenuItem::Render()
 {
-    if(GetWatched())
+    if(IsWatched())
         RenderCheckmark(4);
 
     bool indent = role != MenuItemRole::Navigation;
+
     if (indent)
         ImGui::Indent();
 
-    if (sublabel.size() > 0 && Config::show_sublabels) {
-        ImGui::TextDisabled(sublabel.c_str());
-        ImGui::SameLine();
-    }
-
-    ImGui::Text(Truncate(label).c_str());
+    RenderLabels();
 
     if (indent)
         ImGui::Unindent();
 
-    ImU32 cell_bg_color = ImGui::GetColorU32(ImVec4(0, 0, 0, 0));
-
-    if (selected) cell_bg_color = ImGui::GetColorU32(ImVec4(0.2f, 0.2f, 0.6f, 0.65f));
-    if (actively_selected) cell_bg_color = ImGui::GetColorU32(ImVec4(0.4f, 0.4f, 0.8f, 0.65f));
-
-    ImGui::TableSetBgColor(ImGuiTableBgTarget_CellBg, cell_bg_color);
+    RenderBackground();
 }
 
-std::string MenuItem::Truncate(std::string label)
+
+
+bool MenuItem::IsWatched()
 {
-    if (label.size() > Config::label_max_length)
-        return label.substr(0, Config::label_max_length) + "...";
+    if (role == MenuItemRole::Watchable) return watched;
+    if (role == MenuItemRole::Navigation) return false;
 
-    return label;
+    return SubItemsAreWatched();
 }
 
-void MenuItem::RenderCheckmark(int spacing_top)
+
+
+void MenuItem::SetWatched(bool b)
 {
-    ImDrawList* draw_list = ImGui::GetWindowDrawList();
-    const ImVec2 cur = ImGui::GetCursorScreenPos();
+    if (role == MenuItemRole::Navigation) return;
+    if (role == MenuItemRole::Watchable) {
+        if (watched != b)
+            MetadataCache::SetWatched(filename, b);
 
-    const ImVec2 p1 = ImVec2(0, 6 + spacing_top);
-    const ImVec2 p2 = ImVec2(4, 10 + spacing_top);
-    const ImVec2 p3 = ImVec2(12, 2 + spacing_top);
+        watched = b;
+        return;
+    }
 
-    draw_list->AddLine(ImVec2(cur.x + p1.x, cur.y + p1.y), ImVec2(cur.x + p2.x, cur.y + p2.y), ImColor(ImVec4(1, 1, 1, 1)), 2.0f);
-    draw_list->AddLine(ImVec2(cur.x + p2.x, cur.y + p2.y), ImVec2(cur.x + p3.x, cur.y + p3.y), ImColor(ImVec4(1, 1, 1, 1)), 2.0f);
+    // Else set all subitems
+    for (int i = 0; i < subitems.size(); i++)
+        subitems[i]->SetWatched(b);
 }
+
+
 
 MenuItem* MenuItem::SelectedSubitem() {
 
@@ -133,9 +131,6 @@ MenuItem* MenuItem::SelectedSubitem(int depth) {
     return currentItem;
 }
 
-/// <summary>
-/// Returns a pointer to the last added subitem. Only call immediately after AddItem as a shortcut.
-/// </summary>
 MenuItem* MenuItem::Last() {
     if (subitems.size() == 0) return nullptr;
     return subitems[subitems.size() - 1];
@@ -169,13 +164,69 @@ int MenuItem::MaxTreeDepth() {
     return maxDepth;
 }
 
-std::string MenuItem::GetRowLabel(int index) {
-    if (index >= subitems.size() || index < 0) return "";
-    return subitems[index]->label;
-}
-
 MenuItem* MenuItem::GetRowItem(int index) {
     if (index >= subitems.size() || index < 0) return nullptr;
     return subitems[index];
 }
 
+
+
+
+
+
+
+std::string MenuItem::Truncate(std::string label)
+{
+    if (label.size() > Config::label_max_length)
+        return label.substr(0, Config::label_max_length) + "...";
+
+    return label;
+}
+
+void MenuItem::IndexToBounds() {
+    selected_subitem_index = 
+        MathHelpers::Repeat(selected_subitem_index, 0, subitems.size() - 1);
+}
+
+bool MenuItem::SubItemsAreWatched()
+{
+    int sum = 0;
+    for (int i = 0; i < subitems.size(); i++)
+        sum += (int)subitems[i]->IsWatched();
+
+    return sum == subitems.size();
+}
+
+void MenuItem::RenderCheckmark(int spacing_top)
+{
+    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    const ImVec2 cur = ImGui::GetCursorScreenPos();
+
+    const ImVec2 p1 = ImVec2(0, 6 + spacing_top);
+    const ImVec2 p2 = ImVec2(4, 10 + spacing_top);
+    const ImVec2 p3 = ImVec2(12, 2 + spacing_top);
+
+    draw_list->AddLine(ImVec2(cur.x + p1.x, cur.y + p1.y), ImVec2(cur.x + p2.x, cur.y + p2.y), ImColor(ImVec4(1, 1, 1, 1)), 2.0f);
+    draw_list->AddLine(ImVec2(cur.x + p2.x, cur.y + p2.y), ImVec2(cur.x + p3.x, cur.y + p3.y), ImColor(ImVec4(1, 1, 1, 1)), 2.0f);
+}
+
+
+void MenuItem::RenderBackground()
+{
+    ImU32 cell_bg_color = ImGui::GetColorU32(ImVec4(0, 0, 0, 0));
+
+    if (selected) cell_bg_color = ImGui::GetColorU32(ImVec4(0.2f, 0.2f, 0.6f, 0.65f));
+    if (actively_selected) cell_bg_color = ImGui::GetColorU32(ImVec4(0.4f, 0.4f, 0.8f, 0.65f));
+
+    ImGui::TableSetBgColor(ImGuiTableBgTarget_CellBg, cell_bg_color);
+}
+
+void MenuItem::RenderLabels()
+{
+    if (sublabel.size() > 0 && Config::show_sublabels) {
+        ImGui::TextDisabled(sublabel.c_str());
+        ImGui::SameLine();
+    }
+
+    ImGui::Text(Truncate(label).c_str());
+}

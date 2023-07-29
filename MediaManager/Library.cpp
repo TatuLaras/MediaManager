@@ -4,189 +4,36 @@
 namespace fs = std::filesystem;
 
 
-/// <summary>
-/// Generate whole menu hierarchy tree based on library and fetched metadata. (multi-threaded)
-/// </summary>
-/// <returns></returns>
-void Library::GenerateMenuTree(MenuItem* root_item)
+
+void Library::StartGeneratingMenuTree(MenuItem* root_item)
 {
 	movie_thread_done = false;
 	tv_thread_done = false;
 
 	MenuItem* movies = root_item->AddItem("Movies");
 	workers.push_back(std::thread(&Library::GenerateMoviesMenuTree, movies));
+
 	MenuItem* shows = root_item->AddItem("TV Shows");
 	workers.push_back(std::thread(&Library::GenerateTVMenuTree, shows));
-	if (!FsHelpers::PathExists(Config::movie_folder)) {
-		movies->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a movie folder. \nThen you can go to Library > Refresh.");
-	}
-	else {
-		movies->infopanel = new PlaceholderInfoPanel();
-	}
 
-	if (!FsHelpers::PathExists(Config::tv_folder)) {
-		shows->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a TV show folder. \nThen you can go to Library > Refresh.");
-	}
-	else {
-		shows->infopanel = new PlaceholderInfoPanel();
-	}
-
-}
-
-
-
-
-
-
-std::vector<MovieMetadata> Library::ScanMovieLibrary()
-{
-	std::vector<MovieMetadata> datas;
-	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
-
-	// Iterate through all files in configured movie folder
 
 	if (!FsHelpers::PathExists(Config::movie_folder))
-		return datas;
+		movies->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a movie folder. \nThen you can go to Library > Refresh.");
+	else
+		movies->infopanel = new PlaceholderInfoPanel();
 
-	for (const auto& entry : fs::recursive_directory_iterator(FsHelpers::ToPath(Config::movie_folder))) {
-		if (!entry.path().has_extension()) continue;
-		std::string filename = FsHelpers::WideToMultibyte(entry.path().filename().native());
-		std::string file_path = FsHelpers::WideToMultibyte(entry.path().native());
-		std::string file_extension = FsHelpers::WideToMultibyte(entry.path().extension());
-
-		bool extension_supported = 
-			std::count(
-				Config::supported_file_formats.begin(), 
-				Config::supported_file_formats.end(), 
-				file_extension
-			);
-
-		if (!extension_supported) continue;
-		if (MetadataCache::IsHidden(filename)) continue;
-
-		MovieMetadata metadata;
-
-		// Try getting from disk 
-		if (!MetadataCache::TryGet(filename, &metadata) || metadata.id == 0) {
-			// Fetch from tmdb
-			metadata = tmdb.GetMovieMetadataByFilename(filename.c_str());
-			MetadataCache::Cache(filename, &metadata);
-		}
-
-		metadata.file_path = file_path;
-		metadata.filename = filename;
-		metadata.watched = MetadataCache::IsWatched(filename);
-
-		if (metadata.title.size() == 0) {
-			metadata.title = filename;
-		}
-
-		datas.push_back(metadata);
-	}
-
-	return datas;
-}
-
-std::vector<TVShowMetadata> Library::ScanTVLibrary()
-{
-	std::vector<TVShowMetadata> datas;
-	std::vector<std::thread> show_workers;
 
 	if (!FsHelpers::PathExists(Config::tv_folder))
-		return datas;
+		shows->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a TV show folder. \nThen you can go to Library > Refresh.");
+	else
+		shows->infopanel = new PlaceholderInfoPanel();
 
-	// Get all folders immediately under the tv show folder
-	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(Config::tv_folder))) {
-		if (folder_entry.path().has_extension()) continue;
-
-		show_workers.push_back(std::thread(&Library::ScanTVShow, folder_entry, &datas));
-	}
-
-	for (int i = 0; i < show_workers.size(); i++)
-		if (show_workers[i].joinable()) show_workers[i].join();
-
-	return datas;
 }
 
 
 
-void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMetadata>* metadata_list)
-{
-	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
-
-	std::string folder_name = FsHelpers::WideToMultibyte(folder_entry.path().filename().native()).c_str();
-	std::string folder_path = FsHelpers::WideToMultibyte(folder_entry.path().native()).c_str();
-
-	if (MetadataCache::IsHidden(folder_name)) return;
 
 
-	TVShowMetadata metadata;
-
-	// Try getting from disk 
-	if (!MetadataCache::TryGet(folder_name, &metadata) || metadata.id == 0) {
-		// Fetch from tmdb
-		metadata = tmdb.GetTVShowDataByFolderName(folder_name.c_str());
-		MetadataCache::Cache(folder_name, &metadata);
-	}
-
-	if (metadata.title.size() == 0) {
-		metadata.title = folder_name;
-	}
-
-	metadata.folder_name = folder_name;
-
-	// Link file paths
-
-	// Recursively get all files inside the folder
-	for (const auto& file_entry : fs::recursive_directory_iterator(FsHelpers::ToPath(folder_path))) {
-		bool is_folder = !file_entry.path().has_extension();
-		if (is_folder) continue;
-
-		std::string filename = FsHelpers::WideToMultibyte(file_entry.path().filename().native()).c_str();
-		std::string file_path = FsHelpers::WideToMultibyte(file_entry.path().native()).c_str();
-		std::string file_extension = FsHelpers::WideToMultibyte(file_entry.path().extension());
-
-		bool extension_supported =
-			std::count(
-				Config::supported_file_formats.begin(),
-				Config::supported_file_formats.end(),
-				file_extension
-			);
-
-		if (!extension_supported) continue;
-
-		int season = 1;
-		int episode = 0;
-		ParseSeasonEpisodeFromFilename(filename, &season, &episode);
-
-		TVShowEpisode* episode_data = nullptr;
-		TVShowSeason* season_data = nullptr;
-
-		// Try to get episode
-		season_data = metadata.GetSeason(season);
-		if (season_data && episode) {
-			season_data->should_render = true;
-			episode_data = season_data->GetEpisode(episode);
-		}
-
-		// Orphan episode
-		if (episode_data == nullptr) {
-			TVShowEpisode orphan;
-			orphan.name = filename;
-			orphan.filename = filename;
-			orphan.file_path = file_path;
-			orphan.watched = MetadataCache::IsWatched(filename);
-			metadata.orphan_episodes.push_back(orphan);
-		}
-		else {
-			episode_data->filename = filename;
-			episode_data->file_path = file_path;
-			episode_data->watched = MetadataCache::IsWatched(filename);
-		}
-	}
-
-	metadata_list->push_back(metadata);
-}
 
 void Library::GenerateMoviesMenuTree(MenuItem* parent) {
 	// Get data
@@ -202,8 +49,9 @@ void Library::GenerateMoviesMenuTree(MenuItem* parent) {
 		movie_menu_item->action = action;
 
 		// Infopanel
-		movie_menu_item->infopanel = new PosterInfoPanel(movie_metadatas[i]);
-		movie_menu_item->infopanel->SetPanelImage(movie_metadatas[i].poster_path, ImageType::Poster);
+		MetadataInfoPanel* infopanel = new MetadataInfoPanel(movie_metadatas[i]);
+		infopanel->SetPanelImage(movie_metadatas[i].poster_path, ImageType::Poster);
+		movie_menu_item->infopanel = infopanel;
 
 
 		movie_menu_item->role = MenuItemRole::Watchable;
@@ -227,9 +75,13 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 		parent->AddItem(show->title);
 		MenuItem* show_menu_item = parent->Last();
 
+		// So many indentations...
+		// Kinda messy but can't bother coming up with anything more elegant
+
 		// Infopanel
-		show_menu_item->infopanel = new PosterInfoPanel(*show);
-		show_menu_item->infopanel->SetPanelImage(show->poster_path, ImageType::Poster);
+		MetadataInfoPanel* infopanel = new MetadataInfoPanel(*show);
+		infopanel->SetPanelImage(show->poster_path, ImageType::Poster);
+		show_menu_item->infopanel = infopanel;
 
 		show_menu_item->role = MenuItemRole::TVShow;
 		show_menu_item->metadata_identifier = show->folder_name;
@@ -243,8 +95,9 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 			MenuItem* season_menu_item = show_menu_item->Last();
 
 			// Infopanel
-			season_menu_item->infopanel = new PosterInfoPanel(*show_season);
-			season_menu_item->infopanel->SetPanelImage(show_season->poster_path, ImageType::Poster);
+			MetadataInfoPanel* infopanel = new MetadataInfoPanel(*show_season);
+			infopanel->SetPanelImage(show_season->poster_path, ImageType::Poster);
+			season_menu_item->infopanel = infopanel;
 
 			season_menu_item->role = MenuItemRole::TVSeason;
 
@@ -258,8 +111,9 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 				MenuItem* episode_menu_item = season_menu_item->Last();
 
 				// Infopanel
-				episode_menu_item->infopanel = new PosterInfoPanel(*show_episode);
-				episode_menu_item->infopanel->SetPanelImage(show_episode->still_path, ImageType::Still);
+				MetadataInfoPanel* infopanel = new MetadataInfoPanel(*show_season);
+				infopanel->SetPanelImage(show_episode->still_path, ImageType::Still);
+				episode_menu_item->infopanel = infopanel;
 
 				// Play action
 				PlayFileAction* action = new PlayFileAction(show_episode->file_path);
@@ -290,7 +144,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 			MenuItem* episode_menu_item = orphans_menu_item->Last();
 
 			// Infopanel
-			episode_menu_item->infopanel = new PosterInfoPanel(*show_episode);
+			episode_menu_item->infopanel = new MetadataInfoPanel(*show_episode);
 
 			// Play action
 			PlayFileAction* action = new PlayFileAction(show_episode->file_path);
@@ -307,25 +161,180 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 	tv_thread_done = true;
 }
 
-void Library::ParseSeasonEpisodeFromFilename(std::string filename, int* out_season, int* out_episode) {
+
+std::vector<MovieMetadata> Library::ScanMovieLibrary()
+{
+	std::vector<MovieMetadata> data_list;
+	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
+
+	if (!FsHelpers::PathExists(Config::movie_folder))
+		return data_list;
+
+	// Iterate through all files in configured movie folder
+	for (const auto& entry : fs::recursive_directory_iterator(FsHelpers::ToPath(Config::movie_folder))) {
+
+		if (!entry.path().has_extension()) continue;
+
+		std::string entry_filename = FsHelpers::WideToMultibyte(entry.path().filename().native());
+		std::string entry_file_path = FsHelpers::WideToMultibyte(entry.path().native());
+		std::string entry_file_extension = FsHelpers::WideToMultibyte(entry.path().extension());
+
+		bool extension_supported =
+			std::count(
+				Config::supported_file_formats.begin(),
+				Config::supported_file_formats.end(),
+				entry_file_extension
+			);
+
+		if (!extension_supported) continue;
+		if (MetadataCache::IsMarkedHidden(entry_filename)) continue;
+
+		MovieMetadata metadata;
+
+		// Try getting from disk 
+		if (!MetadataCache::Retrieve(entry_filename, &metadata) || metadata.id == 0) {
+			// Fetch from tmdb
+			metadata = tmdb.GetMovieMetadataByFilename(entry_filename.c_str());
+
+			MetadataCache::Store(entry_filename, &metadata);
+		}
+
+		metadata.file_path = entry_file_path;
+		metadata.filename = entry_filename;
+		metadata.watched = MetadataCache::IsWatched(entry_filename);
+
+		if (metadata.title.size() == 0)
+			metadata.title = entry_filename;
+		
+
+		data_list.push_back(metadata);
+	}
+
+	return data_list;
+}
+
+std::vector<TVShowMetadata> Library::ScanTVLibrary()
+{
+	std::vector<TVShowMetadata> data_list;
+	std::vector<std::thread> tv_show_workers;
+
+	if (!FsHelpers::PathExists(Config::tv_folder))
+		return data_list;
+
+	// Get all folders immediately under the configured tv show folder
+	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(Config::tv_folder))) {
+
+		if (folder_entry.path().has_extension()) continue;
+
+		// New thread for this tv show
+		tv_show_workers.push_back(std::thread(&Library::ScanTVShow, folder_entry, &data_list));
+	}
+
+	JoinThreads(tv_show_workers);
+
+	return data_list;
+}
+
+void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMetadata>* metadata_list)
+{
+	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
+
+	std::string entry_folder_name = FsHelpers::WideToMultibyte(folder_entry.path().filename().native()).c_str();
+	std::string entry_folder_path = FsHelpers::WideToMultibyte(folder_entry.path().native()).c_str();
+
+	if (MetadataCache::IsMarkedHidden(entry_folder_name)) return;
+
+
+	TVShowMetadata metadata;
+
+	// Try getting from disk 
+	if (!MetadataCache::Retrieve(entry_folder_name, &metadata) || metadata.id == 0) {
+		// Fetch from tmdb
+		metadata = tmdb.GetTVShowDataByFolderName(entry_folder_name.c_str());
+
+		MetadataCache::Store(entry_folder_name, &metadata);
+	}
+
+	if (metadata.title.size() == 0) {
+		metadata.title = entry_folder_name;
+	}
+
+	metadata.folder_name = entry_folder_name;
+
+	// Link file paths
+
+	// Recursively get all files inside the folder
+	for (const auto& file_entry : fs::recursive_directory_iterator(FsHelpers::ToPath(entry_folder_path))) {
+		bool is_folder = !file_entry.path().has_extension();
+		if (is_folder) continue;
+
+		std::string entry_filename = FsHelpers::WideToMultibyte(file_entry.path().filename().native()).c_str();
+		std::string entry_file_path = FsHelpers::WideToMultibyte(file_entry.path().native()).c_str();
+		std::string entry_file_extension = FsHelpers::WideToMultibyte(file_entry.path().extension());
+
+		bool extension_supported =
+			std::count(
+				Config::supported_file_formats.begin(),
+				Config::supported_file_formats.end(),
+				entry_file_extension
+			);
+
+		if (!extension_supported) continue;
+
+		int season = 1;
+		int episode = 0;
+		ParseSeasonAndEpisodeFromFilename(entry_filename, &season, &episode);
+
+		TVShowEpisode* episode_data = nullptr;
+		TVShowSeason* season_data = nullptr;
+
+		season_data = metadata.GetSeason(season);
+
+		if (season_data != nullptr && episode > 0) {
+			season_data->should_render = true;
+			episode_data = season_data->GetEpisode(episode);
+		}
+
+		// Orphan episode
+		if (episode_data == nullptr) {
+			TVShowEpisode orphan;
+			orphan.name = entry_filename;
+			orphan.filename = entry_filename;
+			orphan.file_path = entry_file_path;
+			orphan.watched = MetadataCache::IsWatched(entry_filename);
+			metadata.orphan_episodes.push_back(orphan);
+		}
+		else {
+			episode_data->filename = entry_filename;
+			episode_data->file_path = entry_file_path;
+			episode_data->watched = MetadataCache::IsWatched(entry_filename);
+		}
+	}
+
+	metadata_list->push_back(metadata);
+}
+
+
+void Library::ParseSeasonAndEpisodeFromFilename(std::string filename, int* out_season, int* out_episode) {
 	int s_encountered_at = 0;
 	int e_encountered_at = 0;
 
-	// Try parse season and episode from filename
 	for (int i = 0; i < filename.size(); i++) {
-		bool digits_ahead = isdigit(filename[i + 1]) && isdigit(filename[i + 2]);
-		if ((filename[i] == 's' || filename[i] == 'S') && digits_ahead) s_encountered_at = i;
-		if ((filename[i] == 'e' || filename[i] == 'E')
-			&& s_encountered_at != -1 && digits_ahead)
+		bool exists_digits_ahead = isdigit(filename[i + 1]) && isdigit(filename[i + 2]);
+
+		if ((filename[i] == 's' || filename[i] == 'S') && exists_digits_ahead) 
+			s_encountered_at = i;
+
+		if ((filename[i] == 'e' || filename[i] == 'E') && exists_digits_ahead)
 			e_encountered_at = i;
 	}
 
-	if (s_encountered_at) {
+	if (s_encountered_at > 0) {
 		std::string season = filename.substr(s_encountered_at + 1, 2);
 		sscanf_s(season.c_str(), "%d", out_season);
 	}
 
-	if (e_encountered_at) {
+	if (e_encountered_at > 0) {
 		std::string episode = filename.substr(e_encountered_at + 1, 2);
 		sscanf_s(episode.c_str(), "%d", out_episode);
 	}

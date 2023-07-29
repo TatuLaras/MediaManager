@@ -1,5 +1,35 @@
 #include "pch.h"
 #include "Config.h"
+
+
+void Config::SaveConfigToDisk()
+{
+	nlohmann::json json;
+	SerializeJSON(json);
+	std::string serialized_json = json.dump();
+
+	std::ofstream output_file(config_file_path);
+
+	output_file << serialized_json;
+
+	output_file.close();
+}
+
+bool Config::LoadConfigFromDisk() {
+	std::string raw = FsHelpers::ReadFileContents(config_file_path);
+	if (raw.size() == 0) return false;
+
+	nlohmann::json json = nlohmann::json::parse(raw);
+
+	DeserializeJSON(json);
+
+	return true;
+}
+
+
+
+
+
 void Config::SerializeJSON(nlohmann::json& json)
 {
 	json["tmdb_key"] = tmdb_key;
@@ -8,7 +38,7 @@ void Config::SerializeJSON(nlohmann::json& json)
 	json["video_player_command"] = video_player_command;
 	json["font_size"] = font_size;
 	json["label_max_length"] = label_max_length;
-	json["large_images"] = large_images;
+	json["large_images"] = use_large_images;
 	json["show_sublabels"] = show_sublabels;
 }
 
@@ -33,36 +63,16 @@ void Config::DeserializeJSON(const nlohmann::json& json)
 		label_max_length = json["label_max_length"].template get<int>();
 
 	if (json.contains("large_images") && json["large_images"].is_boolean())
-		large_images = json["large_images"].template get<bool>();
+		use_large_images = json["large_images"].template get<bool>();
 
 	if (json.contains("show_sublabels") && json["show_sublabels"].is_boolean())
 		show_sublabels = json["show_sublabels"].template get<bool>();
 
-	// Filter
+	FilterValues();
+}
+
+void Config::FilterValues()
+{
 	font_size = MathHelpers::Clamp(font_size, 4, 100);
 	label_max_length = MathHelpers::Clamp(label_max_length, 5, 600);
-}
-
-void Config::SaveConfigToDisk()
-{
-	nlohmann::json json;
-	SerializeJSON(json);
-	std::string serialized_json = json.dump();
-
-	std::ofstream output_file(config_file_path);
-
-	output_file << serialized_json;
-
-	output_file.close();
-}
-
-bool Config::LoadConfigFromDisk() {
-	std::string raw = FsHelpers::ReadFileContents(config_file_path);
-	if (raw.size() == 0) return false;
-
-	nlohmann::json json = nlohmann::json::parse(raw);
-
-	DeserializeJSON(json);
-
-	return true;
 }

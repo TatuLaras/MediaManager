@@ -10,7 +10,7 @@ enum class ImageType {
 };
 
 /// <summary>
-/// Handles storing user configuration data
+/// Handles storing user configured values
 /// </summary>
 class Config
 {
@@ -22,7 +22,7 @@ public:
 	inline static std::string video_player_command = mm_DEFAULT_PLAYER;
 	inline static int font_size = mm_DEFAULT_FONT_SIZE;
 	inline static int label_max_length = mm_DEFAULT_LABEL_MAX_LENGTH;
-	inline static bool large_images = mm_DEFAULT_LARGE_IMAGES;
+	inline static bool use_large_images = mm_DEFAULT_USE_LARGE_IMAGES;
 	inline static bool show_sublabels = mm_DEFAULT_SHOW_SUBLABELS;
 
 	inline static std::vector<std::string> supported_file_formats = 
@@ -39,23 +39,28 @@ public:
 	inline static std::string GetImageSize(ImageType type) {
 
 		if (type == ImageType::Poster) 
-			return large_images ? 
+			return use_large_images ? 
 			 mm_TMDB__IMAGE_SIZE_POSTER_LARGE : mm_TMDB__IMAGE_SIZE;
 
 		if(type == ImageType::Still)
-			return large_images ?
+			return use_large_images ?
 			mm_TMDB__IMAGE_SIZE_STILL_LARGE : mm_TMDB__IMAGE_SIZE;
 	}
 	
 
-	static void SerializeJSON(nlohmann::json& json);
-	static void DeserializeJSON(const nlohmann::json& json);
 	static void SaveConfigToDisk();
 	static bool LoadConfigFromDisk();
+
 
 private:
 	inline static std::string config_file_path;
 	inline static bool initialized;
 
+	static void SerializeJSON(nlohmann::json& json);
+	static void DeserializeJSON(const nlohmann::json& json);
+	/// <summary>
+	/// Limits all values to certain safe ranges
+	/// </summary>
+	static void FilterValues();
 };
 

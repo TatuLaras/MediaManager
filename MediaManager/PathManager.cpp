@@ -5,7 +5,7 @@ std::string PathManager::GetBaseDataFolder(std::string subfolder)
 {
 	// Get native data storage folder
 	if (base_data_folder.size() == 0) {
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+#ifdef mm_def_PLATFORM_WINDOWS
 		char* pValue;
 		size_t len;
 		errno_t err =_dupenv_s(&pValue, &len, "APPDATA");
@@ -25,7 +25,7 @@ std::string PathManager::GetBaseDataFolder(std::string subfolder)
 
 std::filesystem::path PathManager::GetPathOfExecutable()
 {
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+#ifdef mm_def_PLATFORM_WINDOWS
 	wchar_t path[MAX_PATH] = { 0 };
 	GetModuleFileNameW(NULL, path, MAX_PATH);
 	return path;

@@ -2,17 +2,20 @@
 #include "PlayFileAction.h"
 
 void PlayFileAction::Execute(std::wstring command) {
-    // Wrap in extra quotes, just a quirk of the system() function
     command = L"\"" + command + L"\"";
 
+#ifdef mm_def_PLATFORM_WINDOWS
     _wsystem(command.c_str());
+#else
+    system(command.c_str());
+#endif
 }
 
-/// <summary>
-/// Runs a video player in a separate detached thread
-/// </summary>
+
 void PlayFileAction::Perform()
 {
+    // Runs a video player in a separate detached thread
+
     std::filesystem::path file_path_to_play = FsHelpers::ToPath(file_path);
 
     std::wstring base_command = std::wstring(Config::video_player_command.begin(), Config::video_player_command.end());
