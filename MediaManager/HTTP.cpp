@@ -1,19 +1,20 @@
 #include "pch.h"
 #include "HTTP.h"
 
-namespace HTTP {
-	size_t WriteFunction(void* ptr, size_t size, size_t nmemb, std::string* data) {
-		data->append((char*)ptr, size * nmemb);
-		return size * nmemb;
-	}
+size_t WriteFunction(void* ptr, size_t size, size_t nmemb, std::string* data) {
+	data->append((char*)ptr, size * nmemb);
+	return size * nmemb;
+}
 
-	size_t ImageWriteFunction(char* ptr, size_t size, size_t nmemb, void* userdata)
-	{
-		std::ofstream* out = static_cast<std::ofstream*>(userdata);
-		size_t nbytes = size * nmemb;
-		out->write(ptr, nbytes);
-		return nbytes;
-	}
+size_t ImageWriteFunction(char* ptr, size_t size, size_t nmemb, void* userdata)
+{
+	std::ofstream* out = static_cast<std::ofstream*>(userdata);
+	size_t nbytes = size * nmemb;
+	out->write(ptr, nbytes);
+	return nbytes;
+}
+
+namespace HTTP {
 
 	Response Get(std::string url, curl_slist* headers)
 	{
@@ -39,7 +40,7 @@ namespace HTTP {
 
 	void DownloadFileTo(const char* url, const char* destination_path) {
 		CURL* session;
-		std::ofstream output_file(Helpers::UTF8ToPath(destination_path), std::ios::binary);
+		std::ofstream output_file(FsHelpers::ToPath(destination_path), std::ios::binary);
 		CURLcode res;
 		session = curl_easy_init();
 		if (session)

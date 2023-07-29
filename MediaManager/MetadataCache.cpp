@@ -24,7 +24,7 @@ namespace MetadataCache {
 
 	bool TryGet(std::string metadata_identifier, Metadata* out_metadata)
 	{
-		std::string raw = Helpers::ReadFileContents(GetFilePath(metadata_identifier));
+		std::string raw = FsHelpers::ReadFileContents(GetFilePath(metadata_identifier));
 		if (raw.size() == 0) return false;
 
 		nlohmann::json json = nlohmann::json::parse(raw);
@@ -49,7 +49,7 @@ namespace MetadataCache {
 
 	std::filesystem::path GetFilePath(std::string metadata_identifier)
 	{
-		return Helpers::UTF8ToPath(PathManager::GetBaseDataFolder(mm_SUBFOLDER_METADATA) + mm_SLASH + metadata_identifier + ".json");
+		return FsHelpers::ToPath(PathManager::GetBaseDataFolder(mm_SUBFOLDER_METADATA) + mm_SLASH + metadata_identifier + ".json");
 	}
 
 	void SetWatched(std::string metadata_identifier, bool watched) {
@@ -101,14 +101,14 @@ namespace MetadataCache {
 
 	void UnHideAll() {
 		std::filesystem::path hidden_list_file = 
-			Helpers::UTF8ToPath(PathManager::GetBaseDataFolder(mm_SUBFOLDER_OTHER) + mm_SLASH + "hidden");
-		if (Helpers::FilePathExists(hidden_list_file))
+			FsHelpers::ToPath(PathManager::GetBaseDataFolder(mm_SUBFOLDER_OTHER) + mm_SLASH + "hidden");
+		if (FsHelpers::PathExists(hidden_list_file))
 			std::filesystem::remove(hidden_list_file);
 	}
 
 	bool FileContainsLine(std::string line, std::string haystack_filepath)
 	{
-		std::ifstream input_file(Helpers::UTF8ToPath(haystack_filepath));
+		std::ifstream input_file(FsHelpers::ToPath(haystack_filepath));
 		if (input_file.fail()) return false;
 
 		std::string current_line = "";
@@ -125,7 +125,7 @@ namespace MetadataCache {
 	}
 
 	void AddLineToFile(std::string line, std::string filepath) {
-		std::ofstream output_file(Helpers::UTF8ToPath(filepath), std::ios_base::app);
+		std::ofstream output_file(FsHelpers::ToPath(filepath), std::ios_base::app);
 		output_file << line << std::endl;
 		output_file.close();
 	}

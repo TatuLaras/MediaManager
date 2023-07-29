@@ -2,7 +2,7 @@
 #include "Metadata.h"
 #include "imgui.h"
 #include "TMDB.h"
-#include "Helpers.h"
+#include "FsHelpers.h"
 #include "Config.h"
 #include "PathManager.h"
 

@@ -48,7 +48,7 @@ Provide a CLI command to run your media player. The command will be run as {conf
 
 ---
 
-I mainly made this project for my own media consumption needs, but if someone gets use out of this, that would be awesome. You can build the source in visual studio by opening the .sln file, and installing curl and glfw3 from vcpkg if you haven't already. I have also uploaded some binaries in the releases section on GitHub.
+I mainly made this project for my own media consumption needs, but if someone gets use out of this, that would be awesome. You can build the source in visual studio by opening the .sln file, and installing curl and glfw3 from vcpkg if you haven't already. I have also uploaded some binaries in the releases section on GitHub. Linux support is coming eventually.
 
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/5defbc78-343f-48cc-8197-71777f24b859)
 

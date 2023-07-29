@@ -29,7 +29,7 @@ void Config::DeserializeJSON(const nlohmann::json& json)
 		font_size = json["font_size"].template get<int>();
 }
 
-void Config::Save()
+void Config::SaveConfigToDisk()
 {
 	nlohmann::json json;
 	SerializeJSON(json);
@@ -42,8 +42,8 @@ void Config::Save()
 	output_file.close();
 }
 
-bool Config::Load() {
-	std::string raw = Helpers::ReadFileContents(config_file_path);
+bool Config::LoadConfigFromDisk() {
+	std::string raw = FsHelpers::ReadFileContents(config_file_path);
 	if (raw.size() == 0) return false;
 
 	nlohmann::json json = nlohmann::json::parse(raw);

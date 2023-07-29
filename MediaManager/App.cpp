@@ -19,22 +19,62 @@ namespace MediaManager
     static bool show_options_last_frame = false;
     static bool open_custom_search = false;
 
+    static bool main_window_focused = true;
+
     const ImU8 u8_one = 1;
 
+
+
+
+
     void Init() {
-        InitConfig();
         ScanLibrary();
         LoadFonts();
     }
 
+    void Terminate() {
+        Library::JoinThreads();
+        Config::SaveConfigToDisk();
+        delete root_item;
+    }
+
+    void Update() {
+
+        maxDepth = root_item->MaxTreeDepth();
+
+        RenderUI();
+        
+        if (main_window_focused) HandleKeyboardInput();
+        
+        if (show_options_last_frame && !show_options) ImGui::SetWindowFocus("main");
+        show_options_last_frame = show_options;
+
+
+        // Memory safety
+        if (_heapchk() != _HEAPOK)
+            DebugBreak();
+    }
+
+
+
+
+
+
     void ScanLibrary() {
+        if (!Config::IsInitialized()) InitConfig();
         root_item = new MenuItem("Root");
         Library::GenerateMenuTree(root_item);
     }
 
+    void LoadFonts() {
+        if (!Config::IsInitialized()) InitConfig();
+        ImGuiIO& io = ImGui::GetIO();
+        io.Fonts->AddFontFromFileTTF(mm_FONT_USED, Config::font_size, nullptr, io.Fonts->GetGlyphRangesJapanese());
+    }
+
     void InitConfig() {
         Config::Init(PathManager::GetBaseDataFolder(mm_SUBFOLDER_OTHER) + "\\config");
-        Config::Load();
+        Config::LoadConfigFromDisk();
 
         // Config values to text fields
         strcpy_s(tmdb_key, Config::tmdb_key.c_str());
@@ -43,38 +83,43 @@ namespace MediaManager
         strcpy_s(video_player_command, Config::video_player_command.c_str());
     }
 
-    void LoadFonts() {
-        ImGuiIO& io = ImGui::GetIO();
-        io.Fonts->AddFontFromFileTTF(mm_FONT_USED, Config::font_size, nullptr, io.Fonts->GetGlyphRangesJapanese());
-    }
 
-    void Terminate() {
-        Library::JoinThreads();
-        Config::Save();
-        delete root_item;
-    }
 
-    void Update() {
+    
 
-        maxDepth = root_item->MaxTreeDepth();
-
+    void RenderUI()
+    {
         RenderMainMenuBar();
-        RenderMainLayout();
+
+        static ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | 
+            ImGuiWindowFlags_NoMove | 
+            ImGuiWindowFlags_NoSavedSettings | 
+            ImGuiWindowFlags_NoDocking |
+            ImGuiWindowFlags_NoBringToFrontOnFocus;
+
+        const ImGuiViewport* viewport = ImGui::GetMainViewport();
+        ImGui::SetNextWindowPos(viewport->WorkPos);
+        ImGui::SetNextWindowSize(viewport->WorkSize);
+
+        if (ImGui::Begin("main", nullptr, flags))
+        {
+            main_window_focused = ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows);
+
+            RenderMenuTable();
+            ImGui::SameLine();
+            RenderInfoPanel();
+        }
+
+        ImGui::End();
+
         RenderPopup();
         RenderCustomIdBindingModal();
-        
-        if(!Library::movie_thread_done || !Library::tv_thread_done)
-            ShowLoadingOverlay();
+
+        if (!Library::movie_thread_done || !Library::tv_thread_done)
+            RenderLoadingOverlay();
 
         if (show_options) RenderOptionsWindow(&show_options);
 
-        if (show_options_last_frame && !show_options) ImGui::SetWindowFocus("main");
-        show_options_last_frame = show_options;
-
-
-
-        if (_heapchk() != _HEAPOK)
-            DebugBreak();
     }
 
     void RenderMainMenuBar() {
@@ -97,13 +142,13 @@ namespace MediaManager
 
                 if (ImGui::MenuItem("Unhide all hidden items", "Alt+H"))
                     UnHideAll();
-                
+
                 if (ImGui::MenuItem("Empty metadata cache"))
                     EmptyMetadataCache();
-                
+
                 if (ImGui::MenuItem("Empty image cache"))
                     EmptyImageCache();
-                
+
                 ImGui::EndMenu();
             }
 
@@ -111,9 +156,9 @@ namespace MediaManager
                 const char* watched_label = current->GetWatched() ? "Mark as unwatched" : "Mark as watched";
                 if (ImGui::MenuItem(watched_label, "Ctrl+W"))
                     current->ToggleWatched();
-                    
+
                 if ((CurrentIsMovie() || CurrentIsTVShow())) {
-                    if(ImGui::MenuItem("Search metadata by TMDB ID", "Ctrl+B"))
+                    if (ImGui::MenuItem("Search metadata by TMDB ID", "Ctrl+B"))
                         open_custom_search = true;
 
                     if (ImGui::MenuItem("Hide", "Ctrl+H"))
@@ -125,117 +170,6 @@ namespace MediaManager
 
             ImGui::EndMainMenuBar();
         }
-    }
-
-    // TODO come up with something better
-    bool CurrentIsMovie() {
-        MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
-        return inside_menu_item->label == "Movies";
-    }
-
-    bool CurrentIsTVShow() {
-        MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
-        return inside_menu_item->label == "TV Shows";
-    }
-
-    void RenderMainLayout()
-    {
-        static ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | 
-            ImGuiWindowFlags_NoMove | 
-            ImGuiWindowFlags_NoSavedSettings | 
-            ImGuiWindowFlags_NoDocking |
-            ImGuiWindowFlags_NoBringToFrontOnFocus;
-
-        const ImGuiViewport* viewport = ImGui::GetMainViewport();
-        ImGui::SetNextWindowPos(viewport->WorkPos);
-        ImGui::SetNextWindowSize(viewport->WorkSize);
-
-        if (ImGui::Begin("main", nullptr, flags))
-        {
-            
-            if(ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows))
-                HandleKeyboardInput();
-
-            RenderMenuTable();
-            ImGui::SameLine();
-            RenderInfoPanel();
-        }
-
-        ImGui::End();
-
-    }
-
-    void HandleKeyboardInput() {
-        MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
-        MenuItem* current = GetCurrent();
-
-        // Hotkeys
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_W))
-            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftCtrl))) {
-            current->ToggleWatched();
-            return;
-        }
-
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_F5))) {
-            RefreshLibrary();
-            return;
-        }
-
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_B))
-            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftCtrl))) {
-            open_custom_search = true;
-            return;
-        }
-
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_F1)))
-            show_options = true;
-
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_H))
-            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftCtrl))) {
-            HideCurrent();
-            return;
-        }
-
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_H))
-            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftAlt))) {
-            UnHideAll();
-            return;
-        }
-
-        // Left / right
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_RightArrow)) ||
-            ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_D))) 
-            tree_depth++;
-
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_LeftArrow)) ||
-            ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_A))) 
-            tree_depth--;
-
-        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
-            // Perform menu item action if there is one, else navigate the tree as normal
-            if (GetCurrent()->PerformAction()) {
-                current->SetWatched(true);
-                if (inside_menu_item != nullptr) inside_menu_item->NextSubitem();
-            }
-            else
-                tree_depth++;
-        }
-
-        tree_depth = MathHelpers::Clamp(tree_depth, 0, maxDepth - 1);
-
-        // Up / down
-        if (inside_menu_item != nullptr) {
-
-            if (inside_menu_item != nullptr && ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_UpArrow)) ||
-                ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_W))) 
-                inside_menu_item->PreviousSubitem();
-
-            if (inside_menu_item != nullptr && ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_DownArrow)) ||
-                ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_S))) 
-                inside_menu_item->NextSubitem();
-            
-        }
-
     }
 
     void RenderMenuTable() {
@@ -291,28 +225,6 @@ namespace MediaManager
 
         current->RenderInfoPanel();
 
-    }
-
-    MenuItem* GetCurrent() {
-        return root_item->SelectedSubitem(tree_depth)->SelectedSubitem();
-    }
-
-    void RefreshLibrary() {
-        if (!Library::CanScan()) return;
-
-        MenuItem* old = root_item;
-        root_item = new MenuItem("root");
-        delete old;
-        ScanLibrary();
-    }
-
-    void EmptyMetadataCache() {
-        Helpers::EmptyFolder(PathManager::GetBaseDataFolder(mm_SUBFOLDER_METADATA));
-        RefreshLibrary();
-    }
-    
-    void EmptyImageCache() {
-        Helpers::EmptyFolder(PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE));
     }
 
     void RenderPopup() {
@@ -405,7 +317,7 @@ namespace MediaManager
         }
     }
 
-    void ShowLoadingOverlay()
+    void RenderLoadingOverlay()
     {
         const float PAD = 10.0f;
         const ImGuiViewport* viewport = ImGui::GetMainViewport();
@@ -425,13 +337,96 @@ namespace MediaManager
             ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing |
             ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove;
 
-        ImGui::SetNextWindowBgAlpha(0.35f); // Transparent background
         if (ImGui::Begin("Loading overlay", nullptr, window_flags))
         {
             ImGui::Text("Loading metadata...");
         }
         ImGui::End();
     }
+
+
+
+
+
+
+    void HandleKeyboardInput() {
+        MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
+        MenuItem* current = GetCurrent();
+
+        // Hotkeys
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_W))
+            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftCtrl))) {
+            current->ToggleWatched();
+            return;
+        }
+
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_F5))) {
+            RefreshLibrary();
+            return;
+        }
+
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_B))
+            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftCtrl))) {
+            open_custom_search = true;
+            return;
+        }
+
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_F1)))
+            show_options = true;
+
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_H))
+            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftCtrl))) {
+            HideCurrent();
+            return;
+        }
+
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_H))
+            && ImGui::IsKeyDown(ImGui::GetKeyIndex(ImGuiKey_LeftAlt))) {
+            UnHideAll();
+            return;
+        }
+
+        // Left / right
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_RightArrow)) ||
+            ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_D)))
+            tree_depth++;
+
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_LeftArrow)) ||
+            ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_A)))
+            tree_depth--;
+
+        if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+            // Perform menu item action if there is one, else navigate the tree as normal
+            if (GetCurrent()->PerformAction()) {
+                current->SetWatched(true);
+                if (inside_menu_item != nullptr) inside_menu_item->NextSubitem();
+            }
+            else
+                tree_depth++;
+        }
+
+        tree_depth = MathHelpers::Clamp(tree_depth, 0, maxDepth - 1);
+
+        // Up / down
+        if (inside_menu_item != nullptr) {
+
+            if (inside_menu_item != nullptr && ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_UpArrow)) ||
+                ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_W)))
+                inside_menu_item->PreviousSubitem();
+
+            if (inside_menu_item != nullptr && ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_DownArrow)) ||
+                ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_S)))
+                inside_menu_item->NextSubitem();
+
+        }
+
+    }
+
+
+
+
+
+
 
     void HideCurrent() {
         MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
@@ -445,5 +440,40 @@ namespace MediaManager
         MetadataCache::UnHideAll();
         RefreshLibrary();
     }
+
+    // TODO come up with something better
+    bool CurrentIsMovie() {
+        MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
+        return inside_menu_item->label == "Movies";
+    }
+
+    bool CurrentIsTVShow() {
+        MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
+        return inside_menu_item->label == "TV Shows";
+    }
+
+
+    MenuItem* GetCurrent() {
+        return root_item->SelectedSubitem(tree_depth)->SelectedSubitem();
+    }
+
+    void RefreshLibrary() {
+        if (!Library::CanScan()) return;
+
+        MenuItem* old = root_item;
+        root_item = new MenuItem("root");
+        delete old;
+        ScanLibrary();
+    }
+
+    void EmptyMetadataCache() {
+        FsHelpers::WipeFolder(PathManager::GetBaseDataFolder(mm_SUBFOLDER_METADATA));
+        RefreshLibrary();
+    }
+
+    void EmptyImageCache() {
+        FsHelpers::WipeFolder(PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE));
+    }
+
 
 }

@@ -17,8 +17,8 @@ std::string PathManager::GetBaseDataFolder(std::string subfolder)
 
 	std::string directory = base_data_folder + mm_SLASH + subfolder;
 
-	if (!Helpers::FilePathExists(directory))
-		std::filesystem::create_directories(Helpers::UTF8ToPath(directory));
+	if (!FsHelpers::PathExists(directory))
+		std::filesystem::create_directories(FsHelpers::ToPath(directory));
 
 	return directory;
 }

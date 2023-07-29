@@ -171,7 +171,7 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Config.cpp" />
-    <ClCompile Include="Helpers.cpp" />
+    <ClCompile Include="FsHelpers.cpp" />
     <ClCompile Include="HTTP.cpp" />
     <ClCompile Include="imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -248,7 +248,7 @@
     <ClInclude Include="App.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="defines.h" />
-    <ClInclude Include="Helpers.h" />
+    <ClInclude Include="FsHelpers.h" />
     <ClInclude Include="HTTP.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
@@ -278,7 +278,13 @@
     <ClInclude Include="TMDB.h" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="NotoSansJP-Medium.ttf" />
+    <Font Include="NotoSansJP-Medium.ttf">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <FileType>Document</FileType>
+    </Font>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

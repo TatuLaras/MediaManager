@@ -7,29 +7,38 @@
 #include "Library.h"
 #include "Config.h"
 
+/// <summary>
+/// Main app
+/// </summary>
 namespace MediaManager
 {
+    // Called from main.cpp
     void Init();
-    void InitConfig();
-    void ScanLibrary();
-    void Terminate();
     void Update();
-    void RenderMainMenuBar();
+    void Terminate();
+    //
+
+    void ScanLibrary();
     void LoadFonts();
-    void RenderMainLayout();
+    void InitConfig();
+
+    void RenderMainMenuBar();
+    void RenderUI();
     void RenderMenuTable();
     void RenderInfoPanel();
     void RenderCustomIdBindingModal();
-    void ShowLoadingOverlay();
-    void HideCurrent();
-    void UnHideAll();
-    MenuItem* GetCurrent();
-    void RefreshLibrary();
+    void RenderLoadingOverlay();
     void RenderOptionsWindow(bool* open);
     void RenderPopup();
+
     void HandleKeyboardInput();
+
     bool CurrentIsMovie();
     bool CurrentIsTVShow();
     void EmptyMetadataCache();
     void EmptyImageCache();
+    void HideCurrent();
+    void UnHideAll();
+    MenuItem* GetCurrent();
+    void RefreshLibrary();
 }

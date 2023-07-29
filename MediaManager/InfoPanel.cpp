@@ -40,7 +40,7 @@ void InfoPanel::LoadPanelImage() {
     if (panel_image_path.size() == 0) return;
     // If doesn't exist, try downloading
     std::string image_path = GetImagePath();
-    if (!Helpers::FilePathExists(image_path)) {
+    if (!FsHelpers::PathExists(image_path)) {
         TMDB tmdb(Config::tmdb_key.c_str());
         tmdb.DownloadImage(panel_image_path, mm_TMDB__IMAGE_SIZE);
     }

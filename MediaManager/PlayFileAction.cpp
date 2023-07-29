@@ -13,7 +13,7 @@ void PlayFileAction::Execute(std::wstring command) {
 /// </summary>
 void PlayFileAction::Perform()
 {
-    std::filesystem::path file_path_to_play = Helpers::UTF8ToPath(file_path);
+    std::filesystem::path file_path_to_play = FsHelpers::ToPath(file_path);
 
     std::wstring base_command = std::wstring(Config::video_player_command.begin(), Config::video_player_command.end());
     std::wstring full_command = base_command + L" \"" + file_path_to_play.native() + L"\"";

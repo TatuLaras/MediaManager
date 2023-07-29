@@ -5,7 +5,11 @@
       <FullPath>C:\Users\vky\source\テスト\MediaManager\Debug\MediaManager.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\vky\source\テスト\MediaManager\MediaManager\NotoSansJP-Medium.ttf</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>

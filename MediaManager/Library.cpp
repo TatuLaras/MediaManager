@@ -19,14 +19,14 @@ void Library::GenerateMenuTree(MenuItem* root_item)
 	workers.push_back(std::thread(&Library::GenerateMoviesMenuTree, movies));
 	MenuItem* shows = root_item->AddItem("TV Shows");
 	workers.push_back(std::thread(&Library::GenerateTVMenuTree, shows));
-	if (!Helpers::FilePathExists(Config::movie_folder)) {
+	if (!FsHelpers::PathExists(Config::movie_folder)) {
 		movies->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a movie folder. \nThen you can go to Library > Refresh.");
 	}
 	else {
 		movies->infopanel = new PlaceholderInfoPanel();
 	}
 
-	if (!Helpers::FilePathExists(Config::tv_folder)) {
+	if (!FsHelpers::PathExists(Config::tv_folder)) {
 		shows->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a TV show folder. \nThen you can go to Library > Refresh.");
 	}
 	else {
@@ -47,14 +47,14 @@ std::vector<MovieMetadata> Library::ScanMovieLibrary()
 
 	// Iterate through all files in configured movie folder
 
-	if (!Helpers::FilePathExists(Config::movie_folder))
+	if (!FsHelpers::PathExists(Config::movie_folder))
 		return datas;
 
-	for (const auto& entry : fs::recursive_directory_iterator(Helpers::UTF8ToPath(Config::movie_folder))) {
+	for (const auto& entry : fs::recursive_directory_iterator(FsHelpers::ToPath(Config::movie_folder))) {
 		if (!entry.path().has_extension()) continue;
-		std::string filename = Helpers::WStringToString(entry.path().filename().native());
-		std::string file_path = Helpers::WStringToString(entry.path().native());
-		std::string file_extension = Helpers::WStringToString(entry.path().extension());
+		std::string filename = FsHelpers::WideToMultibyte(entry.path().filename().native());
+		std::string file_path = FsHelpers::WideToMultibyte(entry.path().native());
+		std::string file_extension = FsHelpers::WideToMultibyte(entry.path().extension());
 
 		bool extension_supported = 
 			std::count(
@@ -94,11 +94,11 @@ std::vector<TVShowMetadata> Library::ScanTVLibrary()
 	std::vector<TVShowMetadata> datas;
 	std::vector<std::thread> show_workers;
 
-	if (!Helpers::FilePathExists(Config::tv_folder))
+	if (!FsHelpers::PathExists(Config::tv_folder))
 		return datas;
 
 	// Get all folders immediately under the tv show folder
-	for (const auto& folder_entry : fs::directory_iterator(Helpers::UTF8ToPath(Config::tv_folder))) {
+	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(Config::tv_folder))) {
 		if (folder_entry.path().has_extension()) continue;
 
 		show_workers.push_back(std::thread(&Library::ScanTVShow, folder_entry, &datas));
@@ -116,8 +116,8 @@ void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMet
 {
 	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
 
-	std::string folder_name = Helpers::WStringToString(folder_entry.path().filename().native()).c_str();
-	std::string folder_path = Helpers::WStringToString(folder_entry.path().native()).c_str();
+	std::string folder_name = FsHelpers::WideToMultibyte(folder_entry.path().filename().native()).c_str();
+	std::string folder_path = FsHelpers::WideToMultibyte(folder_entry.path().native()).c_str();
 
 	if (MetadataCache::IsHidden(folder_name)) return;
 
@@ -140,13 +140,13 @@ void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMet
 	// Link file paths
 
 	// Recursively get all files inside the folder
-	for (const auto& file_entry : fs::recursive_directory_iterator(Helpers::UTF8ToPath(folder_path))) {
+	for (const auto& file_entry : fs::recursive_directory_iterator(FsHelpers::ToPath(folder_path))) {
 		bool is_folder = !file_entry.path().has_extension();
 		if (is_folder) continue;
 
-		std::string filename = Helpers::WStringToString(file_entry.path().filename().native()).c_str();
-		std::string file_path = Helpers::WStringToString(file_entry.path().native()).c_str();
-		std::string file_extension = Helpers::WStringToString(file_entry.path().extension());
+		std::string filename = FsHelpers::WideToMultibyte(file_entry.path().filename().native()).c_str();
+		std::string file_path = FsHelpers::WideToMultibyte(file_entry.path().native()).c_str();
+		std::string file_extension = FsHelpers::WideToMultibyte(file_entry.path().extension());
 
 		bool extension_supported =
 			std::count(
