@@ -34,7 +34,7 @@ When you first start using MediaManager, you should go to Menu > Options (or pre
 ### Media folders
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/17d1b166-84aa-4d7c-bbbc-1a8cec8e0ca9)
 
-Tell MediaManager where you keep your movies and where you keep your TV shows. The folder structure of the movie folder doesn't matter. In regards to the TV show folder, all top level folders under that folder should be individual TV shows named after the TV show's name, under which the episodes can be in a directory structure of your choosing.
+Tell MediaManager where you keep your movies and where you keep your TV shows. The folder structure of the movie folder doesn't matter. In regards to the TV show folder, all top level folders under that folder should be individual TV shows named after the TV show's name, under which the episodes can be in a directory structure of your choosing. MediaManager will parse the season and episode from the filename using the standard S01E01 or E01 naming convention.
 
 ### TMDB API
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/229494bf-44da-483f-ba3a-ce3a69a08a27)
