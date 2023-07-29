@@ -24,7 +24,6 @@ public:
 	static void GenerateTVMenuTree(MenuItem* parent);
 	static void ScanTVShow(std::filesystem::directory_entry folder_entry, 
 		std::vector<TVShowMetadata>* metadata_list);
-	static std::string GetPlaceHolderTitle(std::string filename);
 	static void JoinThreads() {
 		for (int i = 0; i < workers.size(); i++)
 			if (workers[i].joinable()) workers[i].join();

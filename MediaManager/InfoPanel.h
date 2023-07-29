@@ -21,10 +21,11 @@ class InfoPanel
 public:
 	virtual void Render() = 0;
 	void RenderImage();
-	void SetPanelImage(std::string& path);
+	void SetPanelImage(std::string& path, ImageType type);
 
 private:
 	std::string panel_image_path = "";
+	ImageType panel_image_type = ImageType::Poster;
 	void LoadPanelImage();
 	bool LoadTextureFromFile(const char* filename);
 	void BindTexture();

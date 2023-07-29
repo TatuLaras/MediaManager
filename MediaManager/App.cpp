@@ -11,7 +11,6 @@ namespace MediaManager
     static char movie_folder[256];
     static char tv_folder[256];
     static char video_player_command[256];
-    static UINT8 font_size;
 
     static unsigned int tmdb_id;
 
@@ -21,7 +20,9 @@ namespace MediaManager
 
     static bool main_window_focused = true;
 
+    // Quirks of imgui
     const ImU8 u8_one = 1;
+    const ImU16 u16_one = 1;
 
 
 
@@ -276,8 +277,6 @@ namespace MediaManager
 
             ImGui::InputText("TV show folder", tv_folder, 256);
 
-            ImGui::Text("");
-
             ImGui::InputText("Video player command", video_player_command, 256);
             ImGui::TextDisabled("(will be executed as [command] \"[file path]\")");
 
@@ -285,6 +284,13 @@ namespace MediaManager
 
             ImGui::InputScalar("Font size", ImGuiDataType_U8, &Config::font_size, &u8_one);
             ImGui::TextDisabled("(requires restart)");
+
+            ImGui::InputScalar("Menu item label max length", ImGuiDataType_U16, &Config::label_max_length, &u8_one);
+
+            ImGui::Checkbox("Download larger images", &Config::large_images);
+            ImGui::TextDisabled("(takes up more disk space)");
+            
+            ImGui::Checkbox("Show episode numbers", &Config::show_sublabels);
 
             Config::tmdb_key = std::string(tmdb_key);
             Config::movie_folder = std::string(movie_folder);

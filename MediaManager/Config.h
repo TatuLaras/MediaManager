@@ -1,7 +1,13 @@
 #pragma once
 #include "serialization.h"
 #include "FsHelpers.h"
+#include "MathHelper.h"
 #include "defines.h"
+
+enum class ImageType {
+	Poster,
+	Still
+};
 
 /// <summary>
 /// Handles storing user configuration data
@@ -14,8 +20,10 @@ public:
 	inline static std::string tv_folder;
 
 	inline static std::string video_player_command = mm_DEFAULT_PLAYER;
-
 	inline static int font_size = mm_DEFAULT_FONT_SIZE;
+	inline static int label_max_length = mm_DEFAULT_LABEL_MAX_LENGTH;
+	inline static bool large_images = mm_DEFAULT_LARGE_IMAGES;
+	inline static bool show_sublabels = mm_DEFAULT_SHOW_SUBLABELS;
 
 	inline static std::vector<std::string> supported_file_formats = 
 		{ ".mkv", ".mp4", ".avi", ".mov", ".m4v", ".m4p", ".flv", ".m4v", ".f4v", ".f4p", ".f4a", 
@@ -28,6 +36,17 @@ public:
 	}
 
 	inline static bool IsInitialized() { return initialized; }
+	inline static std::string GetImageSize(ImageType type) {
+
+		if (type == ImageType::Poster) 
+			return large_images ? 
+			 mm_TMDB__IMAGE_SIZE_POSTER_LARGE : mm_TMDB__IMAGE_SIZE;
+
+		if(type == ImageType::Still)
+			return large_images ?
+			mm_TMDB__IMAGE_SIZE_STILL_LARGE : mm_TMDB__IMAGE_SIZE;
+	}
+	
 
 	static void SerializeJSON(nlohmann::json& json);
 	static void DeserializeJSON(const nlohmann::json& json);

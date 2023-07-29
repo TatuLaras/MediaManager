@@ -6,9 +6,6 @@
 
 inline bool InfoPanel::LoadTextureFromFile(const char* filename)
 {
-    //std::filesystem::path path = Helpers::ConvertUTF8ToPath(filename);
-    //std::string string = Helpers::WStringToString(path);
-
     // Load from file
     image_data = stbi_load(filename, &image_width, &image_height, NULL, 4);
     return image_data != NULL;
@@ -42,7 +39,7 @@ void InfoPanel::LoadPanelImage() {
     std::string image_path = GetImagePath();
     if (!FsHelpers::PathExists(image_path)) {
         TMDB tmdb(Config::tmdb_key.c_str());
-        tmdb.DownloadImage(panel_image_path, mm_TMDB__IMAGE_SIZE);
+        tmdb.DownloadImage(panel_image_path, Config::GetImageSize(panel_image_type));
     }
 
     image_loading_ram_finished = LoadTextureFromFile(GetImagePath().c_str());
@@ -66,7 +63,8 @@ void InfoPanel::RenderImage()
 	ImGui::Image((void*)(intptr_t)image_texture, ImVec2(image_width, image_height));
 }
 
-void InfoPanel::SetPanelImage(std::string& path) {
+void InfoPanel::SetPanelImage(std::string& path, ImageType type) {
     panel_image_path = path;
+    panel_image_type = type;
 }
 

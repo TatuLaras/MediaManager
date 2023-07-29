@@ -18,7 +18,8 @@ enum class MenuItemRole {
 /// </summary>
 class MenuItem {
 public:
-    std::string label;
+    std::string label = "";
+    std::string sublabel = "";
     /// <summary>
     /// All menu items "under" this one in the menu tree
     /// </summary>
@@ -34,10 +35,11 @@ public:
     InfoPanel* infopanel = nullptr;
 
     MenuItem(std::string label);
+    MenuItem(std::string label, std::string sublabel);
     ~MenuItem();
     MenuItem* AddItem(MenuItem* item);
-    MenuItem* AddItem(const char* item_label);
     MenuItem* AddItem(std::string item_label);
+    MenuItem* AddItem(std::string item_label, std::string sublabel);
     void IndexToBounds();
     void NextSubitem();
     void PreviousSubitem();
@@ -109,6 +111,7 @@ public:
     MenuItem* GetRowItem(int index);
     int MaxTreeDepth();
 
-
+private:
+    std::string Truncate(std::string label);
 };
 

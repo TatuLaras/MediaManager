@@ -1,8 +1,6 @@
 ﻿#include "pch.h"
 #include "Library.h"
 
-#define tl_PLACE_HOLDER_TITLE_MAX_LENGTH 30
-
 namespace fs = std::filesystem;
 
 
@@ -80,7 +78,7 @@ std::vector<MovieMetadata> Library::ScanMovieLibrary()
 		metadata.watched = MetadataCache::IsWatched(filename);
 
 		if (metadata.title.size() == 0) {
-			metadata.title = GetPlaceHolderTitle(filename);
+			metadata.title = filename;
 		}
 
 		datas.push_back(metadata);
@@ -132,7 +130,7 @@ void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMet
 	}
 
 	if (metadata.title.size() == 0) {
-		metadata.title = GetPlaceHolderTitle(folder_name);
+		metadata.title = folder_name;
 	}
 
 	metadata.folder_name = folder_name;
@@ -174,7 +172,7 @@ void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMet
 		// Orphan episode
 		if (episode_data == nullptr) {
 			TVShowEpisode orphan;
-			orphan.name = GetPlaceHolderTitle(filename);
+			orphan.name = filename;
 			orphan.filename = filename;
 			orphan.file_path = file_path;
 			orphan.watched = MetadataCache::IsWatched(filename);
@@ -205,7 +203,7 @@ void Library::GenerateMoviesMenuTree(MenuItem* parent) {
 
 		// Infopanel
 		movie_menu_item->infopanel = new PosterInfoPanel(movie_metadatas[i]);
-		movie_menu_item->infopanel->SetPanelImage(movie_metadatas[i].poster_path);
+		movie_menu_item->infopanel->SetPanelImage(movie_metadatas[i].poster_path, ImageType::Poster);
 
 
 		movie_menu_item->role = MenuItemRole::Watchable;
@@ -231,7 +229,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 
 		// Infopanel
 		show_menu_item->infopanel = new PosterInfoPanel(*show);
-		show_menu_item->infopanel->SetPanelImage(show->poster_path);
+		show_menu_item->infopanel->SetPanelImage(show->poster_path, ImageType::Poster);
 
 		show_menu_item->role = MenuItemRole::TVShow;
 		show_menu_item->metadata_identifier = show->folder_name;
@@ -246,7 +244,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 
 			// Infopanel
 			season_menu_item->infopanel = new PosterInfoPanel(*show_season);
-			season_menu_item->infopanel->SetPanelImage(show_season->poster_path);
+			season_menu_item->infopanel->SetPanelImage(show_season->poster_path, ImageType::Poster);
 
 			season_menu_item->role = MenuItemRole::TVSeason;
 
@@ -256,12 +254,12 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 				TVShowEpisode* show_episode = &show_season->episodes[e];
 				if (show_episode->file_path.size() == 0) continue;
 
-				season_menu_item->AddItem(show_episode->name);
+				season_menu_item->AddItem(show_episode->name, std::to_string(show_episode->episode_number));
 				MenuItem* episode_menu_item = season_menu_item->Last();
 
 				// Infopanel
 				episode_menu_item->infopanel = new PosterInfoPanel(*show_episode);
-				episode_menu_item->infopanel->SetPanelImage(show_episode->still_path);
+				episode_menu_item->infopanel->SetPanelImage(show_episode->still_path, ImageType::Still);
 
 				// Play action
 				PlayFileAction* action = new PlayFileAction(show_episode->file_path);
@@ -307,14 +305,6 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 	}
 
 	tv_thread_done = true;
-}
-
-std::string Library::GetPlaceHolderTitle(std::string filename)
-{
-	if (filename.size() > tl_PLACE_HOLDER_TITLE_MAX_LENGTH)
-		return filename.substr(0, tl_PLACE_HOLDER_TITLE_MAX_LENGTH) + "...";
-
-	return filename;
 }
 
 void Library::ParseSeasonEpisodeFromFilename(std::string filename, int* out_season, int* out_episode) {

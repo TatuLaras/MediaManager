@@ -4,6 +4,11 @@
 MenuItem::MenuItem(std::string item_label) {
     label = item_label;
 }
+MenuItem::MenuItem(std::string item_label, std::string item_sublabel)
+{
+    label = item_label;
+    sublabel = item_sublabel;
+}
 MenuItem::~MenuItem()
 {
     for (int i = 0; i < subitems.size(); i++) 
@@ -19,14 +24,16 @@ MenuItem* MenuItem::AddItem(MenuItem* item)
     return item;
 }
 
-MenuItem* MenuItem::AddItem(const char* item_label)
-{
-    return AddItem(std::string(item_label));
-}
-
 MenuItem* MenuItem::AddItem(std::string item_label)
 {
     MenuItem* menuItem = new MenuItem(item_label);
+    subitems.push_back(menuItem);
+    return menuItem;
+}
+
+MenuItem* MenuItem::AddItem(std::string item_label, std::string sublabel)
+{
+    MenuItem* menuItem = new MenuItem(item_label, sublabel);
     subitems.push_back(menuItem);
     return menuItem;
 }
@@ -53,19 +60,34 @@ void MenuItem::Render()
     if(GetWatched())
         RenderCheckmark(4);
 
-    if (role != MenuItemRole::Navigation)
+    bool indent = role != MenuItemRole::Navigation;
+    if (indent)
         ImGui::Indent();
 
-    ImGui::Text(((role != MenuItemRole::Navigation ? "" : "") + label).c_str());
+    if (sublabel.size() > 0 && Config::show_sublabels) {
+        ImGui::TextDisabled(sublabel.c_str());
+        ImGui::SameLine();
+    }
 
-    if (role != MenuItemRole::Navigation)
+    ImGui::Text(Truncate(label).c_str());
+
+    if (indent)
         ImGui::Unindent();
 
     ImU32 cell_bg_color = ImGui::GetColorU32(ImVec4(0, 0, 0, 0));
 
     if (selected) cell_bg_color = ImGui::GetColorU32(ImVec4(0.2f, 0.2f, 0.6f, 0.65f));
     if (actively_selected) cell_bg_color = ImGui::GetColorU32(ImVec4(0.4f, 0.4f, 0.8f, 0.65f));
+
     ImGui::TableSetBgColor(ImGuiTableBgTarget_CellBg, cell_bg_color);
+}
+
+std::string MenuItem::Truncate(std::string label)
+{
+    if (label.size() > Config::label_max_length)
+        return label.substr(0, Config::label_max_length) + "...";
+
+    return label;
 }
 
 void MenuItem::RenderCheckmark(int spacing_top)

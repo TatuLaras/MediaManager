@@ -2,13 +2,14 @@
 #include "Config.h"
 void Config::SerializeJSON(nlohmann::json& json)
 {
-	if (font_size > 100) font_size = 100;
-
 	json["tmdb_key"] = tmdb_key;
 	json["movie_folder"] = movie_folder;
 	json["tv_folder"] = tv_folder;
 	json["video_player_command"] = video_player_command;
 	json["font_size"] = font_size;
+	json["label_max_length"] = label_max_length;
+	json["large_images"] = large_images;
+	json["show_sublabels"] = show_sublabels;
 }
 
 void Config::DeserializeJSON(const nlohmann::json& json)
@@ -27,6 +28,19 @@ void Config::DeserializeJSON(const nlohmann::json& json)
 	
 	if (json.contains("font_size") && json["font_size"].is_number_integer())
 		font_size = json["font_size"].template get<int>();
+
+	if (json.contains("label_max_length") && json["label_max_length"].is_number_integer())
+		label_max_length = json["label_max_length"].template get<int>();
+
+	if (json.contains("large_images") && json["large_images"].is_boolean())
+		large_images = json["large_images"].template get<bool>();
+
+	if (json.contains("show_sublabels") && json["show_sublabels"].is_boolean())
+		show_sublabels = json["show_sublabels"].template get<bool>();
+
+	// Filter
+	font_size = MathHelpers::Clamp(font_size, 4, 100);
+	label_max_length = MathHelpers::Clamp(label_max_length, 5, 600);
 }
 
 void Config::SaveConfigToDisk()

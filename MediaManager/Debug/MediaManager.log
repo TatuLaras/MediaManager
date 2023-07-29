@@ -1,90 +1,57 @@
 ﻿cl : command line warning D9035: option 'GZ' has been deprecated and will be removed in a future release
 cl : command line warning D9036: use 'RTC1' instead of 'GZ'
-  pch.cpp
-cl : command line warning D9035: option 'GZ' has been deprecated and will be removed in a future release
-cl : command line warning D9036: use 'RTC1' instead of 'GZ'
   App.cpp
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(68,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(85,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.h(29,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\App.cpp(72,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(70,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(87,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.h(28,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\App.cpp(73,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Config.cpp
-  FsHelpers.cpp
-  HTTP.cpp
   InfoPanel.cpp
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\InfoPanel.cpp(66,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vky\source\テスト\MediaManager\MediaManager\InfoPanel.cpp(66,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vky\source\テスト\MediaManager\MediaManager\InfoPanel.cpp(63,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vky\source\テスト\MediaManager\MediaManager\InfoPanel.cpp(63,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Library.cpp
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(68,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(85,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.h(29,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(107,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(197,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(225,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(239,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(254,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(286,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(325,20): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(68,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(85,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.h(29,21): warning C4018: '<': signed/unsigned mismatch
-  MathHelper.cpp
-  MenuAction.cpp
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(70,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(87,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.h(28,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(105,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(195,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(223,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(237,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(252,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(284,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.cpp(315,20): warning C4018: '<': signed/unsigned mismatch
   MenuItem.cpp
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(68,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(85,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(9,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(76,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(77,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(78,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(87,25): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(94,25): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(151,15): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(156,15): warning C4018: '>=': signed/unsigned mismatch
-  Metadata.cpp
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.cpp(287,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.cpp(20): message : see reference to function template instantiation 'std::vector<std::map<std::string,nlohmann::json_abi_v3_11_2::json,std::less<std::string>,std::allocator<std::pair<const StringType,nlohmann::json_abi_v3_11_2::basic_json<std::map,std::vector,StringType,bool,int64_t,uint64_t,double,std::allocator,nlohmann::json_abi_v3_11_2::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>>>>>,std::allocator<std::map<std::string,nlohmann::json_abi_v3_11_2::json,std::less<std::string>,std::allocator<std::pair<const StringType,nlohmann::json_abi_v3_11_2::basic_json<std::map,std::vector,StringType,bool,int64_t,uint64_t,double,std::allocator,nlohmann::json_abi_v3_11_2::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>>>>>>> SubSerializable::ArrayToSerializable<ProductionCompany>(std::vector<ProductionCompany,std::allocator<ProductionCompany>>)' being compiled
-          with
-          [
-              StringType=std::string
-          ]
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.cpp(301,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.cpp(131): message : see reference to function template instantiation 'std::vector<TVShowEpisode,std::allocator<TVShowEpisode>> SubSerializable::ArrayFromSerializable<TVShowEpisode>(std::vector<std::map<std::string,nlohmann::json_abi_v3_11_2::json,std::less<std::string>,std::allocator<std::pair<const StringType,nlohmann::json_abi_v3_11_2::basic_json<std::map,std::vector,StringType,bool,int64_t,uint64_t,double,std::allocator,nlohmann::json_abi_v3_11_2::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>>>>>,std::allocator<std::map<std::string,nlohmann::json_abi_v3_11_2::json,std::less<std::string>,std::allocator<std::pair<const StringType,nlohmann::json_abi_v3_11_2::basic_json<std::map,std::vector,StringType,bool,int64_t,uint64_t,double,std::allocator,nlohmann::json_abi_v3_11_2::adl_serializer,std::vector<uint8_t,std::allocator<uint8_t>>>>>>>>,bool)' being compiled
-          with
-          [
-              StringType=std::string
-          ]
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(70,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(87,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(14,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(87,22): warning C4018: '>': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(98,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(99,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(100,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(109,25): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(116,25): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(173,15): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.cpp(178,15): warning C4018: '>=': signed/unsigned mismatch
   MetadataCache.cpp
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
@@ -92,12 +59,6 @@ C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warn
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
   PathManager.cpp
-  PosterInfoPanel.cpp
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
   PlaceholderInfoPanel.cpp
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
@@ -105,8 +66,12 @@ C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warn
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
   PlayFileAction.cpp
-  simple_types.cpp
-C:\Users\vky\source\テスト\MediaManager\MediaManager\simple_types.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  PosterInfoPanel.cpp
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
   TMDB.cpp
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
@@ -116,504 +81,15 @@ C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warn
 C:\Users\vky\source\テスト\MediaManager\MediaManager\TMDB.cpp(118,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\TMDB.cpp(175,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\vky\source\テスト\MediaManager\MediaManager\TMDB.cpp(252,23): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(100,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(144,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(181,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Metadata.h(190,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(70,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\MenuItem.h(87,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Library.h(28,21): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-cl : command line warning D9035: option 'GZ' has been deprecated and will be removed in a future release
-cl : command line warning D9036: use 'RTC1' instead of 'GZ'
-  imgui.cpp
-  imgui_demo.cpp
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(372,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(372,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(372,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(378,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(378,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(378,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(398,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(398,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(398,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(417,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(417,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(417,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(438,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(438,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(438,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(537,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(537,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(537,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(559,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(559,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(559,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(568,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(568,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(568,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(588,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(588,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(588,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(623,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(623,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(623,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(631,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(631,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(631,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(636,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(636,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(636,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(646,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(646,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(646,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(650,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(650,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(650,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(657,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(657,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(657,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(679,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(679,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(679,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(700,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(700,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(700,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(719,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(719,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(719,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(742,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(742,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(742,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(760,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(760,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(760,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(769,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(769,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(769,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(776,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(776,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(776,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(788,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(788,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(788,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(804,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(804,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(804,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(815,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(815,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(815,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(826,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(826,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(826,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(911,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(911,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(911,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(914,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(914,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(914,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(935,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(935,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(935,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1019,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1019,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1019,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1043,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1043,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1043,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1058,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1058,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1058,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1061,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1061,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1061,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1072,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1072,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1072,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1106,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1106,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1106,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1133,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1133,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1133,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1189,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1189,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1189,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1217,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1217,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1217,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1269,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1269,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1269,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1312,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1312,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1312,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1321,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1321,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1321,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1334,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1334,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1334,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1347,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1347,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1347,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1365,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1365,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1365,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1377,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1377,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1377,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1413,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1413,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1413,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1446,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1446,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1446,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1474,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1474,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1474,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1477,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1477,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1477,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1503,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1503,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1503,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1535,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1535,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1535,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1546,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1546,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1546,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1603,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1603,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1603,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1646,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1646,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1646,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1662,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1662,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1662,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1665,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1665,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1665,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1692,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1692,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1692,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1735,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1735,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1735,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1807,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1807,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1807,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1814,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1814,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1814,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1868,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1868,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1868,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1890,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1890,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1890,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1908,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1908,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1908,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1916,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1916,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1916,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1920,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1920,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1920,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1924,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1924,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1924,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1932,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1932,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(1932,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2000,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2000,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2000,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2006,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2006,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2006,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2082,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2082,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2082,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2116,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2116,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2116,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2127,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2127,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2127,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2177,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2177,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2177,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2197,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2197,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2197,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2231,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2231,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2231,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2251,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2251,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2251,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2284,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2284,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2284,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2349,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2349,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2349,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2352,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2352,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2352,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2367,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2367,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2367,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2435,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2435,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2435,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2465,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2465,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2465,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2577,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2577,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2577,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2679,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2679,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2679,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2687,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2687,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2687,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2710,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2710,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2710,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2714,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2714,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2714,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2802,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2802,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2802,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2879,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2879,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2879,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2885,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2885,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2885,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2906,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2906,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2906,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2915,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2915,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2915,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2947,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2947,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2947,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2955,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2955,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2955,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2974,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2974,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(2974,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3021,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3021,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3021,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3140,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3140,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3140,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3144,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3144,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3144,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3217,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3217,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3217,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3263,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3263,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3263,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3338,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3338,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3338,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3425,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3425,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3425,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3490,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3490,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3490,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3523,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3523,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3523,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3545,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3545,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3545,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3638,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3638,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3638,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3725,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3725,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3725,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3801,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3801,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3801,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3973,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3973,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(3973,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4013,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4013,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4013,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4075,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4075,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4075,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4146,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4146,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4146,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4176,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4176,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4176,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4210,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4210,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4210,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4260,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4260,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4260,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4318,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4318,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4318,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4427,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4427,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4427,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4531,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4531,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4531,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4574,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4574,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4574,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4663,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4663,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4663,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4730,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4730,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4730,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4796,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4796,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4796,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4841,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4841,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4841,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4861,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4861,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4861,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4928,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4928,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4928,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4986,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4986,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(4986,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5058,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5058,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5058,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5104,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5104,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5104,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5152,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5152,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5152,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5259,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5259,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5259,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5300,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5300,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5300,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5388,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5388,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5388,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5705,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5705,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5705,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5713,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5713,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5713,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5758,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5758,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5758,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5794,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5794,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5794,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5826,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5826,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5826,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5841,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5841,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5841,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5867,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5867,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5867,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5909,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5909,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5909,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5915,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5915,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5915,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5949,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5949,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5949,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5967,13): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5967,13): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5967,13): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5993,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5993,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(5993,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6021,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6021,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6021,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6037,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6037,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6037,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6079,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6079,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6079,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6122,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6122,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6122,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6338,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6338,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6338,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6680,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6680,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6680,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6706,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6706,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6706,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6723,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6723,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6723,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6744,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6744,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6744,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6778,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6778,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(6778,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7263,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7263,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7263,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7294,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7294,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7294,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7411,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7411,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7411,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7447,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7447,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7447,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7509,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7509,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7509,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7578,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7578,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7578,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7644,9): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7644,9): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7644,9): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7720,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7720,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7720,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7750,5): warning C4566: character represented by universal-character-name '\u30C6' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7750,5): warning C4566: character represented by universal-character-name '\u30B9' cannot be represented in the current code page (1252)
-C:\Users\vky\source\テスト\MediaManager\MediaManager\imgui\imgui_demo.cpp(7750,5): warning C4566: character represented by universal-character-name '\u30C8' cannot be represented in the current code page (1252)
-  imgui_draw.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Generating Code...
+C:\Users\vky\source\テスト\MediaManager\MediaManager\Config.h(48): warning C4715: 'Config::GetImageSize': not all control paths return a value
   MediaManager.vcxproj -> C:\Users\vky\source\テスト\MediaManager\Debug\MediaManager.exe
