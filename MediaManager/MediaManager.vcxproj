@@ -272,6 +272,7 @@
     <ClInclude Include="PosterInfoPanel.h" />
     <ClInclude Include="PlaceholderInfoPanel.h" />
     <ClInclude Include="PlayFileAction.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="serialization.h" />
     <ClInclude Include="simple_types.h" />
     <ClInclude Include="stb_image.h" />
@@ -285,6 +286,15 @@
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
       <FileType>Document</FileType>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MediaManager.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MediaManager.ico" />
+    <Image Include="MediaManager.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

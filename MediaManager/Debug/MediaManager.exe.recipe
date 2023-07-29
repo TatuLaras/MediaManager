@@ -9,6 +9,9 @@
     <ContentFile>
       <FullPath>C:\Users\vky\source\テスト\MediaManager\MediaManager\NotoSansJP-Medium.ttf</FullPath>
     </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\vky\source\テスト\MediaManager\MediaManager\MediaManager.png</FullPath>
+    </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
