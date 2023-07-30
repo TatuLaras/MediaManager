@@ -1,6 +1,5 @@
 #pragma once
 #include "MenuAction.h"
-#include "imgui.h"
 #include "MathHelper.h"
 #include "Metadata.h"
 #include "MetadataCache.h"
@@ -31,7 +30,7 @@ public:
     bool selected;
     bool watched;
     bool actively_selected;
-    
+
     std::string filename = "";
     std::string metadata_identifier = "";
     
@@ -107,8 +106,9 @@ private:
     void IndexToBounds();
     bool SubItemsAreWatched();
 
-    void RenderCheckmark(int spacing_top = 0);
+    void RenderCheckmark(float* out_checkmark_width = nullptr);
+    
     void RenderBackground();
-    void RenderLabels();
+    void RenderLabels(float margin_left);
 };
 

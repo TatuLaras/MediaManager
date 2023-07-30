@@ -75,6 +75,10 @@ struct TVShowEpisode : SubSerializable {
 		if (!runtime) return "";
 		return std::to_string(runtime) + "m";
 	}
+
+	std::string GetFormattedEpisodeNumber() {
+		return std::to_string(episode_number);
+	}
 };
 
 struct TVShowSeason : SubSerializable {

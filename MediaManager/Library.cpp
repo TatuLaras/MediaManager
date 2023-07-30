@@ -107,7 +107,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 				TVShowEpisode* show_episode = &show_season->episodes[e];
 				if (show_episode->file_path.size() == 0) continue;
 
-				season_menu_item->AddItem(show_episode->name, std::to_string(show_episode->episode_number));
+				season_menu_item->AddItem(show_episode->name, show_episode->GetFormattedEpisodeNumber());
 				MenuItem* episode_menu_item = season_menu_item->Last();
 
 				// Infopanel
