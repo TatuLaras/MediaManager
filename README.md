@@ -1,5 +1,5 @@
 # MediaManager
-MediaManager is a program that scans your media folder, fetches all the necessary metadata and images from TMDB and displays it on a clean user interface. It's similar to Kodi, however I did not like using it for a couple of reasons, so I made my own version. 
+MediaManager is an application that allows you to manage your local TV show and movie library. It's similar to Kodi, however I did not like using it for a couple of reasons, so I made my own version. 
 
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/3e49473d-18ac-4ffa-9698-3cbd810982de)
 
