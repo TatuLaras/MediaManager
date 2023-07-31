@@ -111,7 +111,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 				MenuItem* episode_menu_item = season_menu_item->Last();
 
 				// Infopanel
-				MetadataInfoPanel* infopanel = new MetadataInfoPanel(*show_season);
+				MetadataInfoPanel* infopanel = new MetadataInfoPanel(*show_episode);
 				infopanel->SetPanelImage(show_episode->still_path, ImageType::Still);
 				episode_menu_item->infopanel = infopanel;
 

@@ -29,7 +29,10 @@ MetadataInfoPanel::MetadataInfoPanel(TVShowEpisode metadata)
 {
     title = metadata.name;
     overview = metadata.overview;
-    under_title_info = std::string("Season ") + std::to_string(metadata.season_number) + std::string(" episode ") + std::to_string(metadata.episode_number) + mm_SPACE + metadata.GetFormattedRuntime() + mm_SPACE + metadata.air_date;
+    under_title_info = std::string("Season ") 
+        + std::to_string(metadata.season_number) + std::string(" episode ") 
+        + std::to_string(metadata.episode_number) + mm_SPACE + metadata.GetFormattedRuntime()
+        + mm_SPACE + metadata.air_date;
     formatted_vote_average = metadata.GetFormattedVoteAverage();
 }
 
