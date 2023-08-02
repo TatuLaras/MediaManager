@@ -515,8 +515,7 @@ namespace MediaManager
 
 		MenuItem* old = root_item;
 		root_item = new MenuItem("root");
-		if(old)
-			delete old;
+		delete old;
 		ScanLibrary();
 	}
 
