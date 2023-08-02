@@ -43,7 +43,7 @@ Tell MediaManager where you keep your movies and where you keep your TV shows. T
 ### TMDB API
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/229494bf-44da-483f-ba3a-ce3a69a08a27)
 
-You will need a TMDB API bearer key to be able to fetch metadata. You can generate one for free at [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api).
+You will need a TMDB API read access key to be able to fetch metadata. You can generate one for free at [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api).
 
 ### Media player
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/8ad88963-1af5-45c4-925a-fe3a342139bc)
