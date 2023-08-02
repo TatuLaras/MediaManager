@@ -13,11 +13,13 @@ MenuItem::MenuItem(std::string item_label, std::string item_sublabel)
 
 MenuItem::~MenuItem()
 {
-	for (int i = 0; i < subitems.size(); i++)
-		delete subitems[i];
+	for (int i = 0; i < subitems.size(); i++) {
+		if(subitems[i])
+			delete subitems[i];
+	}
 
-	delete action;
-	delete infopanel;
+	if(action) delete action;
+	if(infopanel) delete infopanel;
 }
 
 
@@ -114,7 +116,8 @@ void MenuItem::DeleteSelectedSubitem()
 	if (subitems.size() <= selected_subitem_index) return;
 	MenuItem* current = subitems[selected_subitem_index];
 	subitems.erase(subitems.begin() + selected_subitem_index);
-	delete current;
+	if(current)
+		delete current;
 
 }
 

@@ -8,8 +8,12 @@ class PlayFileAction :
 {
 public:
     PlayFileAction(std::string playable_file_path): file_path(playable_file_path) {}
-    static void Execute(std::wstring command);
 
+#ifdef mm_def_PLATFORM_WINDOWS
+    static void Execute(std::wstring command);
+#else
+    static void Execute(std::string command);
+#endif
 
 private:
     virtual void Perform() override;

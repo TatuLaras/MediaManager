@@ -104,7 +104,7 @@ std::string TMDB::GetIDBySearchQuery(std::string search_query, std::string endpo
 void TMDB::DownloadImage(std::string image_path, std::string options)
 {
     HTTP::DownloadFileTo((mm_TMDB__BASE_URL_IMAGE + options + image_path).c_str(),
-        (PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE) + std::string("\\") + image_path.substr(1, image_path.size() - 1)).c_str());
+        (PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE) + mm_SLASH + image_path.substr(1, image_path.size() - 1)).c_str());
 }
 
 /// <summary>

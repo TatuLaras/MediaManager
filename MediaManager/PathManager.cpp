@@ -11,7 +11,7 @@ std::string PathManager::GetBaseDataFolder(std::string subfolder)
 		errno_t err =_dupenv_s(&pValue, &len, "APPDATA");
 		if (!err && pValue != 0) base_data_folder = std::string(pValue) + "\\TatuLaras\\MediaManager";
 #else
-		base_data_folder = "~/.local/share/TatuLaras/MediaManager";
+		base_data_folder = std::string(getenv("HOME")) + "/.local/share/TatuLaras/MediaManager";
 #endif
 	}
 
@@ -30,10 +30,15 @@ std::filesystem::path PathManager::GetPathOfExecutable()
 	GetModuleFileNameW(NULL, path, MAX_PATH);
 	return path;
 #else
-	char result[PATH_MAX];
-	ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
-	return std::string(result, (count > 0) ? count : 0);
+	char buff[PATH_MAX];
+    ssize_t len = ::readlink("/proc/self/exe", buff, sizeof(buff)-1);
+    if (len != -1) {
+      buff[len] = '\0';
+      return std::string(buff);
+    }
 #endif
+
+	return std::string("");
 }
 
 std::string PathManager::GetBaseResourceFolder() {

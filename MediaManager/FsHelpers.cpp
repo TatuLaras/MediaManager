@@ -23,12 +23,16 @@ std::string FsHelpers::ReadFileContents(std::filesystem::path file_path) {
 }
 
 
-
+#ifdef mm_def_PLATFORM_WINDOWS
 std::filesystem::path FsHelpers::ToPath(std::string file_path) {
 	std::u8string utf8_string(file_path.cbegin(), file_path.cend());
 	return std::filesystem::path(utf8_string);
 }
-
+#else 
+std::filesystem::path FsHelpers::ToPath(std::string file_path) {
+	return std::filesystem::path(file_path);
+}
+#endif
 
 
 bool FsHelpers::PathExists(std::string& file_path)
@@ -42,12 +46,18 @@ bool FsHelpers::PathExists(std::filesystem::path& file_path)
 }
 
 
-
-std::string FsHelpers::WideToMultibyte(std::wstring str)
-{
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
-	return myconv.to_bytes(str);
-}
+#ifdef mm_def_PLATFORM_WINDOWS
+	std::string FsHelpers::WideToMultibyte(std::wstring str)
+	{
+		std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
+		return myconv.to_bytes(str);
+	}
+#else 
+	std::string FsHelpers::WideToMultibyte(std::string str)
+	{
+		return str;
+	}
+#endif
 
 
 

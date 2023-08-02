@@ -1,5 +1,18 @@
 #pragma once
-#include "serialization.h";
+#include "serialization.h"
+#include "defines.h"
+
+#ifdef mm_def_PLATFORM_WINDOWS
+    inline std::string mm_laras_std_format_wrapper(float value) {
+        return std::format("{:.1f}", value) + " (TMDB)";
+    }
+#else 
+    inline std::string mm_laras_std_format_wrapper(float value) {
+        std::stringstream stream;
+        stream << std::fixed << std::setprecision(1) << value;
+        return stream.str();
+    }
+#endif
 
 struct Genre : SubSerializable {
 	int id = 0;
@@ -68,7 +81,7 @@ struct TVShowEpisode : SubSerializable {
 	virtual void FromSerializableType(std::map<std::string, nlohmann::json> data, bool tmdb_mode = false) override;
 
 	std::string GetFormattedVoteAverage() {
-		return std::format("{:.1f}", vote_average) + " (TMDB)";
+		return mm_laras_std_format_wrapper(vote_average) + " (TMDB)";
 	}
 
 	std::string GetFormattedRuntime() {
@@ -97,7 +110,7 @@ struct TVShowSeason : SubSerializable {
 	virtual void FromSerializableType(std::map<std::string, nlohmann::json> data, bool tmdb_mode = false) override;
 
 	std::string GetFormattedVoteAverage() {
-		return std::format("{:.1f}", vote_average) + " (TMDB)";
+		return mm_laras_std_format_wrapper(vote_average) + " (TMDB)";
 	}
 
 	TVShowEpisode* GetEpisode(int episode_number) {
@@ -139,7 +152,7 @@ struct Metadata : Serializable {
 	virtual void ParseTMDB(const nlohmann::json& json) = 0;
 	
 	std::string GetFormattedVoteAverage() {
-		return std::format("{:.1f}", vote_average) + " (TMDB)";
+		return mm_laras_std_format_wrapper(vote_average) + " (TMDB)";
 	}
 
 	std::string GetFormattedGenres() {

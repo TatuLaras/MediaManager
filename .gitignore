@@ -430,6 +430,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-.vs
 */imgui.ini
-*.log
+MediaManager/build_linux/*
+*/.vscode/*

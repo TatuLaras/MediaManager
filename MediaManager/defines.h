@@ -4,6 +4,8 @@
 #define mm_def_PLATFORM_WINDOWS
 #else
 #define mm_SLASH "/"
+#define sscanf_s sscanf
+#define strcpy_s strcpy
 #endif
 
 #define mm_SPACE "  -  "
@@ -26,3 +28,5 @@
 #define mm_SUBFOLDER_IMAGE "images"
 #define mm_SUBFOLDER_METADATA "metadata"
 #define mm_SUBFOLDER_OTHER "other"
+
+

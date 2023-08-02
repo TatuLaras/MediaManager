@@ -28,7 +28,7 @@ private:
 
 	std::string GetImagePath() {
 		return PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE)
-			+ std::string("\\")
+			+ mm_SLASH
 			+ panel_image_path.substr(1, panel_image_path.size() - 1);
 	}
 };

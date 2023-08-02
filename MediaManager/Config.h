@@ -45,6 +45,8 @@ public:
 		if(type == ImageType::Still)
 			return use_large_images ?
 			mm_TMDB__IMAGE_SIZE_STILL_LARGE : mm_TMDB__IMAGE_SIZE;
+
+		return mm_TMDB__IMAGE_SIZE;
 	}
 	
 

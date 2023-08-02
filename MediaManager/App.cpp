@@ -39,7 +39,8 @@ namespace MediaManager
 	void Terminate() {
 		Library::JoinThreads();
 		Config::SaveConfigToDisk();
-		delete root_item;
+		if(root_item)
+			delete root_item;
 	}
 
 	void Update() {
@@ -77,7 +78,7 @@ namespace MediaManager
 	}
 
 	void InitConfig() {
-		Config::Init(PathManager::GetBaseDataFolder(mm_SUBFOLDER_OTHER) + "\\config");
+		Config::Init(PathManager::GetBaseDataFolder(mm_SUBFOLDER_OTHER) + mm_SLASH + "config");
 		Config::LoadConfigFromDisk();
 
 		// Config values to text fields
@@ -508,7 +509,8 @@ namespace MediaManager
 
 		MenuItem* old = root_item;
 		root_item = new MenuItem("root");
-		delete old;
+		if(old)
+			delete old;
 		ScanLibrary();
 	}
 

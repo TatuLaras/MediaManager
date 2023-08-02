@@ -1,6 +1,12 @@
 #pragma once
 #include "FsHelpers.h"
 #include "defines.h"
+
+#ifndef mm_def_PLATFORM_WINDOWS
+#include <unistd.h>
+#include <limits.h>
+#endif
+
 class PathManager
 {
 public:
