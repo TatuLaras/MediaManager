@@ -26,8 +26,12 @@ MediaManager doesn't include an integrated media player and is designed to use t
 
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/2d1afa8d-82a6-4641-b344-c3cc07e7adc6)
 
+## Building
 
-## Instructions
+On Windows, you can build the source in visual studio by opening the .sln file, and installing curl and glfw3 from vcpkg if you haven't already. On Linux, use the Makefile.
+
+
+## Instructions for use
 
 When you first start using MediaManager, you should go to Menu > Options (or press F1) and configure a few things.
 
@@ -46,9 +50,10 @@ You will need a TMDB API bearer key to be able to fetch metadata. You can genera
 
 Provide a CLI command to run your media player. The command will be run as {configured command} "{the media file}".
 
+
 ---
 
-I mainly made this project for my own media consumption needs, but if someone gets use out of this, that would be awesome. You can build the source in visual studio by opening the .sln file, and installing curl and glfw3 from vcpkg if you haven't already. I have also uploaded some binaries in the releases section. Linux support is coming eventually.
+I mainly made this project for my own media consumption needs, but if someone gets use out of this, that would be awesome. 
 
 ![image](https://github.com/TatuLaras/MediaManager/assets/34749827/5defbc78-343f-48cc-8197-71777f24b859)
 
