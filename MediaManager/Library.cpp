@@ -215,27 +215,32 @@ std::vector<MovieMetadata> Library::ScanMovieLibrary()
 
 std::vector<TVShowMetadata> Library::ScanTVLibrary()
 {
-	std::vector<TVShowMetadata> data_list;
-	std::vector<std::thread> tv_show_workers;
 
 	if (!FsHelpers::PathExists(Config::tv_folder))
-		return data_list;
+		return std::vector<TVShowMetadata>();
+
+
+	std::vector<TVShowMetadata> data;
+	std::vector<std::thread> tv_show_workers;
+	int index = 0;
 
 	// Get all folders immediately under the configured tv show folder
 	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(Config::tv_folder))) {
-
 		if (folder_entry.path().has_extension()) continue;
 
-		// New thread for this tv show
-		tv_show_workers.push_back(std::thread(&Library::ScanTVShow, folder_entry, &data_list));
+		data.push_back(TVShowMetadata());
+		tv_show_workers.push_back(std::thread(&Library::ScanTVShow, folder_entry, &data, index));
+		index++;
 	}
+
+	// New thread for this tv show
 
 	JoinThreads(tv_show_workers);
 
-	return data_list;
+	return data;
 }
 
-void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMetadata>* metadata_list)
+void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMetadata>* data, int index)
 {
 	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
 
@@ -311,7 +316,7 @@ void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMet
 		}
 	}
 
-	metadata_list->push_back(metadata);
+	(*data)[index] = metadata;
 }
 
 
@@ -319,8 +324,9 @@ void Library::ParseSeasonAndEpisodeFromFilename(std::string filename, int* out_s
 	int s_encountered_at = 0;
 	int e_encountered_at = 0;
 
-	for (int i = 0; i < filename.size(); i++) {
-		bool exists_digits_ahead = isdigit(filename[i + 1]) && isdigit(filename[i + 2]);
+	for (int i = 0; i < filename.size() - 2; i++) {
+		bool exists_digits_ahead = filename[i + 1] >= 0 && filename[i + 2] >= 0 &&
+			isdigit(filename[i + 1]) && isdigit(filename[i + 2]);
 
 		if ((filename[i] == 's' || filename[i] == 'S') && exists_digits_ahead) 
 			s_encountered_at = i;

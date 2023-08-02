@@ -48,9 +48,6 @@
     <ClCompile Include="MenuItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="simple_types.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TMDB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

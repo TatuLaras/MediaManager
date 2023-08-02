@@ -51,10 +51,8 @@ private:
 
 	static std::vector<MovieMetadata> ScanMovieLibrary();
 	static std::vector<TVShowMetadata> ScanTVLibrary();
-	static void ScanTVShow(
-		std::filesystem::directory_entry folder_entry, 
-		std::vector<TVShowMetadata>* metadata_list
-	);
+	static void ScanTVShow(std::filesystem::directory_entry folder_entry, 
+		std::vector<TVShowMetadata>* data, int index);
 
 	static void ParseSeasonAndEpisodeFromFilename(std::string filename, 
 		int* out_season, int* out_episode);

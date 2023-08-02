@@ -49,6 +49,7 @@ bool FsHelpers::PathExists(std::filesystem::path& file_path)
 #ifdef mm_def_PLATFORM_WINDOWS
 	std::string FsHelpers::WideToMultibyte(std::wstring str)
 	{
+		if (str.size() == 0) return "";
 		std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
 		return myconv.to_bytes(str);
 	}

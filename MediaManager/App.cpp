@@ -34,6 +34,9 @@ namespace MediaManager
 		LoadFonts();
 
 		open_no_player_modal = Config::video_player_command.size() == 0;
+
+		if (_heapchk() != _HEAPOK)
+			DebugBreak();
 	}
 
 	void Terminate() {
@@ -41,6 +44,9 @@ namespace MediaManager
 		Config::SaveConfigToDisk();
 		if(root_item)
 			delete root_item;
+
+		if (_heapchk() != _HEAPOK)
+			DebugBreak();
 	}
 
 	void Update() {
