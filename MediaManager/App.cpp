@@ -89,8 +89,8 @@ namespace MediaManager
 
 		// Config values to text fields
 		strcpy_s(tmdb_key, Config::tmdb_key.c_str());
-		strcpy_s(movie_folder, Config::movie_folder.c_str());
-		strcpy_s(tv_folder, Config::tv_folder.c_str());
+		strcpy_s(movie_folder, Config::movie_folders.c_str());
+		strcpy_s(tv_folder, Config::tv_folders.c_str());
 		strcpy_s(video_player_command, Config::video_player_command.c_str());
 	}
 
@@ -311,9 +311,9 @@ namespace MediaManager
 		{
 			ImGui::InputText("TMDB API key", tmdb_key, 256, ImGuiInputTextFlags_AutoSelectAll);
 
-			ImGui::InputText("Movies folder", movie_folder, 256);
+			ImGui::InputText("Movie folders (;)", movie_folder, 256);
 
-			ImGui::InputText("TV show folder", tv_folder, 256);
+			ImGui::InputText("TV show folders (;)", tv_folder, 256);
 
 			ImGui::InputText("Video player command", video_player_command, 256);
 			ImGui::TextDisabled("(will be executed as [command] \"[file path]\")");
@@ -331,8 +331,8 @@ namespace MediaManager
 			ImGui::Checkbox("Show episode numbers", &Config::show_sublabels);
 
 			Config::tmdb_key = std::string(tmdb_key);
-			Config::movie_folder = std::string(movie_folder);
-			Config::tv_folder = std::string(tv_folder);
+			Config::movie_folders = std::string(movie_folder);
+			Config::tv_folders = std::string(tv_folder);
 			Config::video_player_command = std::string(video_player_command);
 
 		}

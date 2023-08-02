@@ -17,13 +17,13 @@ void Library::StartGeneratingMenuTree(MenuItem* root_item)
 	workers.push_back(std::thread(&Library::GenerateTVMenuTree, shows));
 
 
-	if (!FsHelpers::PathExists(Config::movie_folder))
+	if (!FsHelpers::PathExists(Config::movie_folders))
 		movies->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a movie folder. \nThen you can go to Library > Refresh.");
 	else
 		movies->infopanel = new PlaceholderInfoPanel();
 
 
-	if (!FsHelpers::PathExists(Config::tv_folder))
+	if (!FsHelpers::PathExists(Config::tv_folders))
 		shows->infopanel = new PlaceholderInfoPanel("Go to Menu > Options to set a TV show folder. \nThen you can go to Library > Refresh.");
 	else
 		shows->infopanel = new PlaceholderInfoPanel();
@@ -167,11 +167,11 @@ std::vector<MovieMetadata> Library::ScanMovieLibrary()
 	std::vector<MovieMetadata> data_list;
 	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
 
-	if (!FsHelpers::PathExists(Config::movie_folder))
-		return data_list;
+	std::vector<std::string> paths = Config::GetMoviePaths();
 
-	// Iterate through all files in configured movie folder
-	for (const auto& entry : fs::recursive_directory_iterator(FsHelpers::ToPath(Config::movie_folder))) {
+	// Iterate through all files in configured movie folders
+	for (int i = 0; i < paths.size(); i++)
+	for (const auto& entry : fs::recursive_directory_iterator(FsHelpers::ToPath(paths[i]))) {
 
 		if (!entry.path().has_extension()) continue;
 
@@ -215,25 +215,25 @@ std::vector<MovieMetadata> Library::ScanMovieLibrary()
 
 std::vector<TVShowMetadata> Library::ScanTVLibrary()
 {
-
-	if (!FsHelpers::PathExists(Config::tv_folder))
-		return std::vector<TVShowMetadata>();
-
+	std::vector<std::string> paths = Config::GetTVPaths();
 
 	std::vector<TVShowMetadata> data;
 	std::vector<std::thread> tv_show_workers;
 	int index = 0;
-
-	// Get all folders immediately under the configured tv show folder
-	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(Config::tv_folder))) {
+	
+	// Get all folders immediately under the configured tv show folders
+	for (int i = 0; i < paths.size(); i++)
+	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(paths[i]))) {
 		if (folder_entry.path().has_extension()) continue;
 
 		data.push_back(TVShowMetadata());
+
+		// New thread for this tv show
 		tv_show_workers.push_back(std::thread(&Library::ScanTVShow, folder_entry, &data, index));
+
 		index++;
 	}
 
-	// New thread for this tv show
 
 	JoinThreads(tv_show_workers);
 

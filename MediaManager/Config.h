@@ -16,8 +16,8 @@ class Config
 {
 public:
 	inline static std::string tmdb_key;
-	inline static std::string movie_folder;
-	inline static std::string tv_folder;
+	inline static std::string movie_folders;
+	inline static std::string tv_folders;
 
 	inline static std::string video_player_command = mm_DEFAULT_PLAYER;
 	inline static int font_size = mm_DEFAULT_FONT_SIZE;
@@ -49,6 +49,17 @@ public:
 		return mm_TMDB__IMAGE_SIZE;
 	}
 	
+	static std::vector<std::string> GetMoviePaths() {
+		std::string paths = Config::movie_folders;
+		if (paths[paths.size() - 1] == ';') paths = paths.substr(0, paths.size() - 1);
+		return SplitPaths(paths);
+	}
+
+	static std::vector<std::string> GetTVPaths() {
+		std::string paths = Config::tv_folders;
+		if (paths[paths.size() - 1] == ';') paths = paths.substr(0, paths.size() - 1);
+		return SplitPaths(paths);
+	}
 
 	static void SaveConfigToDisk();
 	static bool LoadConfigFromDisk();
@@ -64,5 +75,31 @@ private:
 	/// Limits all values to certain safe ranges
 	/// </summary>
 	static void FilterValues();
+
+	static std::vector<std::string> SplitPaths(std::string paths) {
+		std::vector<std::string> returnable;
+
+		int last_cut = 0;
+		for (int i = 0; i < paths.size(); i++) {
+
+			std::string path;
+
+			if (paths[i] == ';')
+				path = paths.substr(last_cut, i - last_cut);
+
+			if (i == paths.size() - 1)
+				path = paths.substr(last_cut, i - last_cut + 1);
+
+
+			if (path.size() > 0) {
+				if (FsHelpers::PathExists(path))
+					returnable.push_back(path);
+
+				last_cut = i + 1;
+			}
+		}
+
+		return returnable;
+	}
 };
 

@@ -33,8 +33,8 @@ bool Config::LoadConfigFromDisk() {
 void Config::SerializeJSON(nlohmann::json& json)
 {
 	json["tmdb_key"] = tmdb_key;
-	json["movie_folder"] = movie_folder;
-	json["tv_folder"] = tv_folder;
+	json["movie_folder"] = movie_folders;
+	json["tv_folder"] = tv_folders;
 	json["video_player_command"] = video_player_command;
 	json["font_size"] = font_size;
 	json["label_max_length"] = label_max_length;
@@ -48,10 +48,10 @@ void Config::DeserializeJSON(const nlohmann::json& json)
 		tmdb_key = json["tmdb_key"].template get<std::string>();
 	
 	if (json.contains("movie_folder") && json["movie_folder"].is_string())
-		movie_folder = json["movie_folder"].template get<std::string>();
+		movie_folders = json["movie_folder"].template get<std::string>();
 	
 	if (json.contains("tv_folder") && json["tv_folder"].is_string())
-		tv_folder = json["tv_folder"].template get<std::string>();
+		tv_folders = json["tv_folder"].template get<std::string>();
 
 	if (json.contains("video_player_command") && json["video_player_command"].is_string())
 		video_player_command = json["video_player_command"].template get<std::string>();
