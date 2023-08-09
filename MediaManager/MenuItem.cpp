@@ -43,12 +43,14 @@ MenuItem* MenuItem::AddItem(std::string item_label, std::string sublabel)
 
 void MenuItem::NextSubitem()
 {
+	scroll_set_requested = true;
 	selected_subitem_index++;
 	IndexToBounds();
 }
 
 void MenuItem::PreviousSubitem()
 {
+	scroll_set_requested = true;
 	selected_subitem_index--;
 	IndexToBounds();
 }
@@ -70,6 +72,11 @@ void MenuItem::Render()
 	RenderLabels(label_margin_left);
 
 	RenderBackground();
+
+	if (actively_selected && scroll_set_requested) {
+		scroll_set_requested = false;
+		ImGui::SetScrollHereY(0.95f);
+	}
 }
 
 

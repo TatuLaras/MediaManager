@@ -13,7 +13,7 @@ enum class MenuItemRole {
 };
 
 /// <summary>
-/// Data structure for one UI menu item
+/// Data structure for one UI menu item in a hierarchy
 /// </summary>
 class MenuItem {
 public:
@@ -30,6 +30,7 @@ public:
     bool selected;
     bool watched;
     bool actively_selected;
+    inline static bool scroll_set_requested;
 
     std::string filename = "";
     std::string metadata_identifier = "";
@@ -102,6 +103,7 @@ public:
     MenuItem* GetRowItem(int index);
 
 private:
+
     std::string Truncate(std::string label);
     void IndexToBounds();
     bool SubItemsAreWatched();

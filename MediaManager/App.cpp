@@ -6,7 +6,7 @@ namespace MediaManager
 	// App state
 	MenuItem* root_item;
 	static int tree_depth = 0;
-	static int maxDepth;
+	static int max_depth;
 	static bool main_window_focused = true;
 
 	// Input field buffers
@@ -27,6 +27,8 @@ namespace MediaManager
 	const ImU16 u16_one = 1;
 
 
+
+
 	// ----- These are called from main.cpp -----
 
 	void Init() {
@@ -45,7 +47,7 @@ namespace MediaManager
 
 	void Update() {
 
-		maxDepth = root_item->MaxTreeDepth();
+		max_depth = root_item->MaxTreeDepth();
 
 		RenderUI();
 
@@ -97,10 +99,12 @@ namespace MediaManager
 	{
 		RenderMainMenuBar();
 
-		static ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration |
+		ImGuiWindowFlags flags = 
+			ImGuiWindowFlags_NoDecoration |
 			ImGuiWindowFlags_NoMove |
 			ImGuiWindowFlags_NoSavedSettings |
 			ImGuiWindowFlags_NoDocking |
+			ImGuiWindowFlags_NoNav |
 			ImGuiWindowFlags_NoBringToFrontOnFocus;
 
 		const ImGuiViewport* viewport = ImGui::GetMainViewport();
@@ -187,24 +191,32 @@ namespace MediaManager
 		ImGuiTableFlags table_flags =
 			ImGuiTableFlags_BordersOuter |
 			ImGuiTableFlags_BordersV |
-			ImGuiTableFlags_ContextMenuInBody |
 			ImGuiTableFlags_NoHostExtendX |
 			ImGuiTableFlags_SizingFixedFit
 			;
 
 		ImGui::PushStyleVar(ImGuiStyleVar_CellPadding, ImVec2(10, 3));
 		// New table
-		if (!ImGui::BeginTable("table", maxDepth, table_flags, ImVec2(-FLT_MIN, -FLT_MIN))) {
+		if (!ImGui::BeginTable("table", max_depth, table_flags, ImVec2(-FLT_MIN, -FLT_MIN))) {
 			ImGui::PopStyleVar();
+			ImGui::EndChild();
 			return;
 		}
+		//float line_height = ImGui::GetTextLineHeightWithSpacing() + 2;
 
+		//const ImGuiViewport* viewport = ImGui::GetMainViewport();
+		//float work_area_height = viewport->WorkSize.y - 30;
+
+		//int max_lines = work_area_height / line_height;
+
+		//int line_offset = 0;
+		
 		// Loop over rows and columns
 		for (int row = 0; row < root_item->MaxTreeWidth(); row++)
 		{
 			ImGui::TableNextRow();
 
-			for (int col = 0; col < maxDepth; col++) {
+			for (int col = 0; col < max_depth; col++) {
 				ImGui::TableSetColumnIndex(col);
 
 				// Corresponding menu item to the cell we're currently defining
@@ -222,10 +234,10 @@ namespace MediaManager
 
 				// Render cell
 				current->Render();
-
 			}
 
 		}
+
 
 		ImGui::EndTable();
 		ImGui::PopStyleVar();
@@ -376,7 +388,7 @@ namespace MediaManager
 		ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration |
 			ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_AlwaysAutoResize |
 			ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing |
-			ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove;
+			ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoInputs;
 
 		if (ImGui::Begin("Loading overlay", nullptr, window_flags))
 		{
@@ -449,7 +461,7 @@ namespace MediaManager
 				tree_depth++;
 		}
 
-		tree_depth = MathHelpers::Clamp(tree_depth, 0, maxDepth - 1);
+		tree_depth = MathHelpers::Clamp(tree_depth, 0, max_depth - 1);
 
 		// Up / down
 		if (inside_menu_item != nullptr) {

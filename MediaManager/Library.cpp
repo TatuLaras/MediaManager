@@ -39,6 +39,8 @@ void Library::GenerateMoviesMenuTree(MenuItem* parent) {
 	// Get data
 	std::vector<MovieMetadata> movie_metadatas = ScanMovieLibrary();
 
+	std::sort(movie_metadatas.begin(), movie_metadatas.end());
+
 	for (int i = 0; i < movie_metadatas.size(); i++) {
 		std::string label = movie_metadatas[i].title;
 		parent->AddItem(label);
@@ -66,6 +68,8 @@ void Library::GenerateMoviesMenuTree(MenuItem* parent) {
 void Library::GenerateTVMenuTree(MenuItem* parent) {
 	// Get data
 	std::vector<TVShowMetadata> series_metadatas = ScanTVLibrary();
+
+	std::sort(series_metadatas.begin(), series_metadatas.end());
 
 	// Series
 	for (int series = 0; series < series_metadatas.size(); series++) {
@@ -226,10 +230,16 @@ std::vector<TVShowMetadata> Library::ScanTVLibrary()
 	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(paths[i]))) {
 		if (folder_entry.path().has_extension()) continue;
 
+		std::string entry_folder_name = FsHelpers::WideToMultibyte(folder_entry.path().filename().native()).c_str();
+		std::string entry_folder_path = FsHelpers::WideToMultibyte(folder_entry.path().native()).c_str();
+
+		if (MetadataCache::IsMarkedHidden(entry_folder_name)) continue;
+
+		// Placeholder
 		data.push_back(TVShowMetadata());
 
 		// New thread for this tv show
-		tv_show_workers.push_back(std::thread(&Library::ScanTVShow, folder_entry, &data, index));
+		tv_show_workers.push_back(std::thread(&Library::ScanTVShow, entry_folder_name, entry_folder_path, &data, index));
 
 		index++;
 	}
@@ -240,15 +250,9 @@ std::vector<TVShowMetadata> Library::ScanTVLibrary()
 	return data;
 }
 
-void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMetadata>* data, int index)
+void Library::ScanTVShow(std::string entry_folder_name, std::string entry_folder_path, std::vector<TVShowMetadata>* data, int data_index)
 {
 	TMDB tmdb = TMDB(Config::tmdb_key.c_str());
-
-	std::string entry_folder_name = FsHelpers::WideToMultibyte(folder_entry.path().filename().native()).c_str();
-	std::string entry_folder_path = FsHelpers::WideToMultibyte(folder_entry.path().native()).c_str();
-
-	if (MetadataCache::IsMarkedHidden(entry_folder_name)) return;
-
 
 	TVShowMetadata metadata;
 
@@ -316,7 +320,7 @@ void Library::ScanTVShow(fs::directory_entry folder_entry, std::vector<TVShowMet
 		}
 	}
 
-	(*data)[index] = metadata;
+	(*data)[data_index] = metadata;
 }
 
 
