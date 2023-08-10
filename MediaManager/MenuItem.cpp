@@ -13,7 +13,7 @@ MenuItem::MenuItem(std::string item_label, std::string item_sublabel)
 
 MenuItem::~MenuItem()
 {
-	for (int i = 0; i < subitems.size(); i++) {
+	for (uint32_t i = 0; i < subitems.size(); i++) {
 		if(subitems[i])
 			delete subitems[i];
 	}
@@ -104,7 +104,7 @@ void MenuItem::SetWatched(bool b)
 	}
 
 	// Else set all subitems
-	for (int i = 0; i < subitems.size(); i++)
+	for (uint32_t i = 0; i < subitems.size(); i++)
 		subitems[i]->SetWatched(b);
 }
 
@@ -174,7 +174,7 @@ int MenuItem::MaxTreeDepth() {
 	return maxDepth;
 }
 
-MenuItem* MenuItem::GetRowItem(int index) {
+MenuItem* MenuItem::GetRowItem(uint32_t index) {
 	if (index >= subitems.size() || index < 0) return nullptr;
 	return subitems[index];
 }
@@ -200,9 +200,9 @@ void MenuItem::IndexToBounds() {
 
 bool MenuItem::SubItemsAreWatched()
 {
-	int sum = 0;
-	for (int i = 0; i < subitems.size(); i++)
-		sum += (int)subitems[i]->IsWatched();
+	uint32_t sum = 0;
+	for (uint32_t i = 0; i < subitems.size(); i++)
+		sum += (uint32_t)subitems[i]->IsWatched();
 
 	return sum == subitems.size();
 }

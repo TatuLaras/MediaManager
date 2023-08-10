@@ -102,7 +102,7 @@ struct TVShowSeason : SubSerializable {
 	}
 
 	TVShowEpisode* GetEpisode(int episode_number) {
-		for (int i = 0; i < episodes.size(); i++) {
+		for (uint32_t i = 0; i < episodes.size(); i++) {
 			if (episodes[i].episode_number == episode_number) return &episodes[i];
 		}
 
@@ -146,7 +146,7 @@ struct Metadata : Serializable {
 	std::string GetFormattedGenres() {
 		std::string str;
 
-		for (int i = 0; i < genres.size(); i++) {
+		for (uint32_t i = 0; i < genres.size(); i++) {
 			if (i > 0) str += ", ";
 			str += genres[i].name;
 		}
@@ -187,7 +187,7 @@ struct TVShowMetadata : Metadata
 
 		std::string returnable = "";
 
-		for (int i = 0; i < episode_run_time.size(); i++) {
+		for (uint32_t i = 0; i < episode_run_time.size(); i++) {
 			if (i > 0) returnable += ", ";
 			returnable += std::to_string(episode_run_time[i]) + "m";
 		}
@@ -196,7 +196,7 @@ struct TVShowMetadata : Metadata
 	}
 
 	TVShowSeason* GetSeason(int season_number) {
-		for (int i = 0; i < seasons.size(); i++) {
+		for (uint32_t i = 0; i < seasons.size(); i++) {
 			if (seasons[i].season_number == season_number) return &seasons[i];
 		}
 

@@ -21,7 +21,7 @@ public:
 
 	inline static std::string video_player_command = mm_DEFAULT_PLAYER;
 	inline static int font_size = mm_DEFAULT_FONT_SIZE;
-	inline static int label_max_length = mm_DEFAULT_LABEL_MAX_LENGTH;
+	inline static uint32_t label_max_length = mm_DEFAULT_LABEL_MAX_LENGTH;
 	inline static bool use_large_images = mm_DEFAULT_USE_LARGE_IMAGES;
 	inline static bool show_sublabels = mm_DEFAULT_SHOW_SUBLABELS;
 
@@ -80,7 +80,7 @@ private:
 		std::vector<std::string> returnable;
 
 		int last_cut = 0;
-		for (int i = 0; i < paths.size(); i++) {
+		for (uint32_t i = 0; i < paths.size(); i++) {
 
 			std::string path;
 

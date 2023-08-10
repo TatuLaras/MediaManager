@@ -24,7 +24,7 @@ public:
     /// All menu items "under" this one in the menu tree
     /// </summary>
     std::vector<MenuItem*> subitems;
-    int selected_subitem_index = 0;
+    uint32_t selected_subitem_index = 0;
 
     MenuItemRole role = MenuItemRole::Navigation;
     bool selected;
@@ -100,7 +100,7 @@ public:
     int MaxTreeWidth();
     int MaxTreeDepth();
 
-    MenuItem* GetRowItem(int index);
+    MenuItem* GetRowItem(uint32_t index);
 
 private:
 

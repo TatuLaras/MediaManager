@@ -41,7 +41,7 @@ void Library::GenerateMoviesMenuTree(MenuItem* parent) {
 
 	std::sort(movie_metadatas.begin(), movie_metadatas.end());
 
-	for (int i = 0; i < movie_metadatas.size(); i++) {
+	for (uint32_t i = 0; i < movie_metadatas.size(); i++) {
 		std::string label = movie_metadatas[i].title;
 		parent->AddItem(label);
 		MenuItem* movie_menu_item = parent->Last();
@@ -72,7 +72,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 	std::sort(series_metadatas.begin(), series_metadatas.end());
 
 	// Series
-	for (int series = 0; series < series_metadatas.size(); series++) {
+	for (uint32_t series = 0; series < series_metadatas.size(); series++) {
 
 		TVShowMetadata* show = &series_metadatas[series];
 
@@ -90,7 +90,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 		show_menu_item->role = MenuItemRole::TVShow;
 		show_menu_item->metadata_identifier = show->folder_name;
 		// Seasons
-		for (int s = 0; s < show->seasons.size(); s++) {
+		for (uint32_t s = 0; s < show->seasons.size(); s++) {
 
 			TVShowSeason* show_season = &show->seasons[s];
 			if (!show_season->should_render) continue;
@@ -106,7 +106,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 			season_menu_item->role = MenuItemRole::TVSeason;
 
 			// Episodes
-			for (int e = 0; e < show_season->episodes.size(); e++) {
+			for (uint32_t e = 0; e < show_season->episodes.size(); e++) {
 
 				TVShowEpisode* show_episode = &show_season->episodes[e];
 				if (show_episode->file_path.size() == 0) continue;
@@ -139,7 +139,7 @@ void Library::GenerateTVMenuTree(MenuItem* parent) {
 
 		orphans_menu_item->role = MenuItemRole::TVSeason;
 
-		for (int e = 0; e < show->orphan_episodes.size(); e++) {
+		for (uint32_t e = 0; e < show->orphan_episodes.size(); e++) {
 
 			TVShowEpisode* show_episode = &show->orphan_episodes[e];
 			if (show_episode->file_path.size() == 0) continue;
@@ -174,7 +174,7 @@ std::vector<MovieMetadata> Library::ScanMovieLibrary()
 	std::vector<std::string> paths = Config::GetMoviePaths();
 
 	// Iterate through all files in configured movie folders
-	for (int i = 0; i < paths.size(); i++)
+	for (uint32_t i = 0; i < paths.size(); i++)
 	for (const auto& entry : fs::recursive_directory_iterator(FsHelpers::ToPath(paths[i]))) {
 
 		if (!entry.path().has_extension()) continue;
@@ -226,7 +226,7 @@ std::vector<TVShowMetadata> Library::ScanTVLibrary()
 	int index = 0;
 	
 	// Get all folders immediately under the configured tv show folders
-	for (int i = 0; i < paths.size(); i++)
+	for (uint32_t i = 0; i < paths.size(); i++)
 	for (const auto& folder_entry : fs::directory_iterator(FsHelpers::ToPath(paths[i]))) {
 		if (folder_entry.path().has_extension()) continue;
 
@@ -328,7 +328,7 @@ void Library::ParseSeasonAndEpisodeFromFilename(std::string filename, int* out_s
 	int s_encountered_at = 0;
 	int e_encountered_at = 0;
 
-	for (int i = 0; i < filename.size() - 2; i++) {
+	for (uint32_t i = 0; i < filename.size() - 2; i++) {
 		bool exists_digits_ahead = filename[i + 1] >= 0 && filename[i + 2] >= 0 &&
 			isdigit(filename[i + 1]) && isdigit(filename[i + 2]);
 

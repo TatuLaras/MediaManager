@@ -32,7 +32,7 @@ public:
 	/// Makes the program wait for all the threads to be finished
 	/// </summary>
 	inline static void JoinThreads(std::vector<std::thread>& workers_list) {
-		for (int i = 0; i < workers_list.size(); i++)
+		for (uint32_t i = 0; i < workers_list.size(); i++)
 			if (workers_list[i].joinable()) workers_list[i].join();
 	}
 
