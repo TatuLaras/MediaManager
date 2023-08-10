@@ -20,7 +20,6 @@ namespace MediaManager
 
     void ScanLibrary();
     void LoadFonts();
-    void LoadIcon();
     void InitConfig();
 
     void RenderMainMenuBar();

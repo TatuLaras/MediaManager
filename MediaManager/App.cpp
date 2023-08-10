@@ -202,15 +202,8 @@ namespace MediaManager
 			ImGui::EndChild();
 			return;
 		}
-		//float line_height = ImGui::GetTextLineHeightWithSpacing() + 2;
-
-		//const ImGuiViewport* viewport = ImGui::GetMainViewport();
-		//float work_area_height = viewport->WorkSize.y - 30;
-
-		//int max_lines = work_area_height / line_height;
-
-		//int line_offset = 0;
 		
+
 		// Loop over rows and columns
 		for (int row = 0; row < root_item->MaxTreeWidth(); row++)
 		{
@@ -498,7 +491,6 @@ namespace MediaManager
 	}
 
 
-	// TODO come up with something better
 	bool CurrentIsMovie() {
 		MenuItem* inside_menu_item = root_item->SelectedSubitem(tree_depth);
 		return inside_menu_item->label == "Movies";
