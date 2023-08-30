@@ -325,27 +325,45 @@ void Library::ScanTVShow(std::string entry_folder_name, std::string entry_folder
 
 
 void Library::ParseSeasonAndEpisodeFromFilename(std::string filename, int* out_season, int* out_episode) {
-	int s_encountered_at = 0;
-	int e_encountered_at = 0;
+	std::string episode_string;
+	std::string season_string;
+
+	int episode_start_index = -1;
+	int episode_end_index = -1;
+	int season_start_index = -1;
+
+	bool in_episode_number = false;
 
 	for (uint32_t i = 0; i < filename.size() - 2; i++) {
-		bool exists_digits_ahead = filename[i + 1] >= 0 && filename[i + 2] >= 0 &&
+		bool exists_digits_ahead = 
+			filename[i + 1] >= 0 && filename[i + 2] >= 0 &&
 			isdigit(filename[i + 1]) && isdigit(filename[i + 2]);
 
-		if ((filename[i] == 's' || filename[i] == 'S') && exists_digits_ahead) 
-			s_encountered_at = i;
+		if (in_episode_number && (filename[i] == ' ' || filename[i] == '.')) {
+			episode_end_index = i;
+			break;
+		}
 
-		if ((filename[i] == 'e' || filename[i] == 'E') && exists_digits_ahead)
-			e_encountered_at = i;
+		if ((filename[i] == 's' || filename[i] == 'S') && exists_digits_ahead) {
+			season_start_index = i;
+			continue;
+		}
+
+		if ((filename[i] == 'e' || filename[i] == 'E') && exists_digits_ahead) {
+			episode_start_index = i;
+			in_episode_number = true;
+			continue;
+		}
 	}
 
-	if (s_encountered_at > 0) {
-		std::string season = filename.substr(s_encountered_at + 1, 2);
+	if (episode_start_index == 0 || episode_end_index == 0) return;
+
+	if (season_start_index > 0) {
+		std::string season = filename.substr(season_start_index + 1, episode_start_index - season_start_index - 1);
+
 		sscanf_s(season.c_str(), "%d", out_season);
 	}
 
-	if (e_encountered_at > 0) {
-		std::string episode = filename.substr(e_encountered_at + 1, 2);
-		sscanf_s(episode.c_str(), "%d", out_episode);
-	}
+	std::string episode = filename.substr(episode_start_index + 1, episode_end_index - episode_start_index - 1);
+	sscanf_s(episode.c_str(), "%d", out_episode);
 }
