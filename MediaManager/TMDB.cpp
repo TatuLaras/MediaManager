@@ -7,7 +7,7 @@
 /// <summary>
 /// You can find your bearer auth token for TMDB at https://developer.themoviedb.org/reference/intro/authentication
 /// </summary>
-TMDB::TMDB(const char* auth_bearer_token)
+TMDB::TMDB(const char *auth_bearer_token)
 {
     bearer_token = auth_bearer_token;
 }
@@ -18,7 +18,8 @@ TMDB::TMDB(const char* auth_bearer_token)
 MovieMetadata TMDB::GetMovieMetadataBySearchQuery(std::string search_query)
 {
     std::string tmdb_id = GetIDBySearchQuery(search_query, mm_TMDB__ENDPOINT__MOVIE_SEARCH);
-    if (tmdb_id.size() == 0) return MovieMetadata();
+    if (tmdb_id.size() == 0)
+        return MovieMetadata();
 
     return GetMovieMetadataById(tmdb_id);
 }
@@ -30,15 +31,22 @@ MovieMetadata TMDB::GetMovieMetadataById(std::string id)
     HTTP::Response res =
         HTTP::RestJson::Get(
             "https://api.themoviedb.org/3/movie/" + id,
-            bearer_token
-        );
+            bearer_token);
 
-    if (res.status_code == 401) {
+    if (res.status_code == 0 || res.data == "")
+    {
+        tmdb_general_error_to_handle = true;
+        tmdb_general_error_reason = "Couldn't connect to TMDB";
+        return metadata;
+    }
+
+    if (res.status_code == 401)
+    {
         key_error_to_handle = true;
         return metadata;
     }
-    
-    if (res.status_code != 200) 
+
+    if (res.status_code != 200)
     {
         tmdb_general_error_to_handle = true;
 
@@ -67,10 +75,17 @@ std::string TMDB::GetIDBySearchQuery(std::string search_query, std::string endpo
     HTTP::Response res =
         HTTP::RestJson::Get(
             url,
-            bearer_token
-        );
+            bearer_token);
 
-    if (res.status_code == 401) {
+    if (res.status_code == 0 || res.data == "")
+    {
+        tmdb_general_error_to_handle = true;
+        tmdb_general_error_reason = "Couldn't connect to TMDB";
+        return "";
+    }
+
+    if (res.status_code == 401)
+    {
         key_error_to_handle = true;
         return "";
     }
@@ -91,11 +106,12 @@ std::string TMDB::GetIDBySearchQuery(std::string search_query, std::string endpo
     nlohmann::json json = nlohmann::json::parse(res.data);
 
     // Check if not valid data or no matches found
-    if (!json.contains("total_results") || json["total_results"].template get<int>() == 0) return "";
+    if (!json.contains("total_results") || json["total_results"].template get<int>() == 0)
+        return "";
 
     // Return id of first result
 
-    std::vector<std::map<std::string, nlohmann::json>> results = 
+    std::vector<std::map<std::string, nlohmann::json>> results =
         json["results"].template get<std::vector<std::map<std::string, nlohmann::json>>>();
 
     return std::to_string(results[0]["id"].template get<int>());
@@ -104,7 +120,7 @@ std::string TMDB::GetIDBySearchQuery(std::string search_query, std::string endpo
 void TMDB::DownloadImage(std::string image_path, std::string options)
 {
     HTTP::DownloadFileTo((mm_TMDB__BASE_URL_IMAGE + options + image_path).c_str(),
-        (PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE) + mm_SLASH + image_path.substr(1, image_path.size() - 1)).c_str());
+                         (PathManager::GetBaseDataFolder(mm_SUBFOLDER_IMAGE) + mm_SLASH + image_path.substr(1, image_path.size() - 1)).c_str());
 }
 
 /// <summary>
@@ -115,11 +131,14 @@ std::string TMDB::ParseQueryFromMovieFilename(std::string filename)
     std::string parsed = "query=";
 
     int last_cut = 0;
-    for (int i = 0; i < filename.size(); i++) {
+    for (int i = 0; i < filename.size(); i++)
+    {
         // Break word at every special character
-        if (!std::isalnum(filename[i], std::locale())) {
+        if (!std::isalnum(filename[i], std::locale()))
+        {
             // Empty segment
-            if (last_cut == i) {
+            if (last_cut == i)
+            {
                 last_cut++;
                 continue;
             }
@@ -137,12 +156,13 @@ std::string TMDB::ParseQueryFromMovieFilename(std::string filename)
             sscanf_s(segment_to_parse.c_str(), "%d", &year);
 
             // If a release year is encountered in filename, stop parsing
-            if (year >= 1888 && year <= 2100) {
+            if (year >= 1888 && year <= 2100)
+            {
                 parsed += "&year=";
                 parsed += std::to_string(year);
                 break;
             }
-               
+
             // Add to final string with url encoded space (%20) delimiter
             parsed += last_cut == 0 ? "" : "%20";
             parsed += segment;
@@ -151,32 +171,30 @@ std::string TMDB::ParseQueryFromMovieFilename(std::string filename)
     }
 
     return parsed;
-
 }
-std::string TMDB::ParseQueryFromMovieFilename(const char* filename)
+std::string TMDB::ParseQueryFromMovieFilename(const char *filename)
 {
     return TMDB::ParseQueryFromMovieFilename(std::string(filename));
 }
 
-MovieMetadata TMDB::GetMovieMetadataByFilename(const char* filename)
+MovieMetadata TMDB::GetMovieMetadataByFilename(const char *filename)
 {
     return GetMovieMetadataBySearchQuery(ParseQueryFromMovieFilename(filename));
 }
-
-
-
-
 
 std::string TMDB::ParseQueryFromTVShowFolderName(std::string folder_name)
 {
     std::string parsed = "query=";
 
     int last_cut = 0;
-    for (int i = 0; i < folder_name.size(); i++) {
+    for (int i = 0; i < folder_name.size(); i++)
+    {
         // Break word at every special character
-        if (!std::isalnum(folder_name[i], std::locale())) {
+        if (!std::isalnum(folder_name[i], std::locale()))
+        {
             // Empty segment
-            if (last_cut == i) {
+            if (last_cut == i)
+            {
                 last_cut++;
                 continue;
             }
@@ -188,18 +206,16 @@ std::string TMDB::ParseQueryFromTVShowFolderName(std::string folder_name)
             parsed += segment;
             last_cut = i + 1;
         }
-
     }
 
     std::string segment = folder_name.substr(last_cut, folder_name.size() - last_cut);
     parsed += "%20";
     parsed += segment;
 
-
     return parsed;
 }
 
-std::string TMDB::ParseQueryFromTVShowFolderName(const char* folder_name)
+std::string TMDB::ParseQueryFromTVShowFolderName(const char *folder_name)
 {
     return ParseQueryFromTVShowFolderName(std::string(folder_name));
 }
@@ -207,7 +223,8 @@ std::string TMDB::ParseQueryFromTVShowFolderName(const char* folder_name)
 TVShowMetadata TMDB::GetTVShowDataBySearchQuery(std::string search_query)
 {
     std::string tmdb_id = GetIDBySearchQuery(search_query, mm_TMDB__ENDPOINT__TV_SEARCH);
-    if (tmdb_id.size() == 0) return TVShowMetadata();
+    if (tmdb_id.size() == 0)
+        return TVShowMetadata();
 
     return GetTVShowDataById(tmdb_id);
 }
@@ -221,10 +238,17 @@ TVShowMetadata TMDB::GetTVShowDataById(std::string id)
     HTTP::Response res =
         HTTP::RestJson::Get(
             mm_TMDB__BASE_URL + std::string("/tv/") + id,
-            bearer_token
-        );
+            bearer_token);
 
-    if (res.status_code == 401) {
+    if (res.status_code == 0 || res.data == "")
+    {
+        tmdb_general_error_to_handle = true;
+        tmdb_general_error_reason = "Couldn't connect to TMDB";
+        return series_metadata;
+    }
+
+    if (res.status_code == 401)
+    {
         key_error_to_handle = true;
         return series_metadata;
     }
@@ -246,34 +270,40 @@ TVShowMetadata TMDB::GetTVShowDataById(std::string id)
 
     series_metadata.ParseTMDB(json);
 
-    if (series_metadata.seasons.size() == 0) return series_metadata;
+    if (series_metadata.seasons.size() == 0)
+        return series_metadata;
 
     // Get episode metadata
-    for (int i = 0; i < series_metadata.seasons.size(); i++) {
-        TVShowSeason* season = &series_metadata.seasons[i];
+    for (int i = 0; i < series_metadata.seasons.size(); i++)
+    {
+        TVShowSeason *season = &series_metadata.seasons[i];
         GetTVEpisodeData(id, std::to_string(season->season_number), &season->episodes);
-
     }
 
     return series_metadata;
 }
 
-TVShowMetadata TMDB::GetTVShowDataByFolderName(const char* filename)
+TVShowMetadata TMDB::GetTVShowDataByFolderName(const char *filename)
 {
     return GetTVShowDataBySearchQuery(ParseQueryFromTVShowFolderName(filename));
 }
 
-
-
-void TMDB::GetTVEpisodeData(std::string series_id, std::string season_number, std::vector<TVShowEpisode>* out_episodes)
+void TMDB::GetTVEpisodeData(std::string series_id, std::string season_number, std::vector<TVShowEpisode> *out_episodes)
 {
     HTTP::Response res =
         HTTP::RestJson::Get(
             mm_TMDB__BASE_URL + std::string("/tv/") + series_id + std::string("/season/") + season_number,
-            bearer_token
-        );
+            bearer_token);
 
-    if (res.status_code == 401) {
+    if (res.status_code == 0 || res.data == "")
+    {
+        tmdb_general_error_to_handle = true;
+        tmdb_general_error_reason = "Couldn't connect to TMDB";
+        return;
+    }
+
+    if (res.status_code == 401)
+    {
         key_error_to_handle = true;
         return;
     }
@@ -291,12 +321,10 @@ void TMDB::GetTVEpisodeData(std::string series_id, std::string season_number, st
         return;
     }
 
-
     nlohmann::json json = nlohmann::json::parse(res.data);
 
     if (json.contains("episodes") && json["episodes"].is_array())
-        *out_episodes= SubSerializable::ArrayFromSerializable<TVShowEpisode>(
-            json["episodes"].template get<std::vector<std::map<std::string, nlohmann::json>>>(), 
-            true
-            );
+        *out_episodes = SubSerializable::ArrayFromSerializable<TVShowEpisode>(
+            json["episodes"].template get<std::vector<std::map<std::string, nlohmann::json>>>(),
+            true);
 }

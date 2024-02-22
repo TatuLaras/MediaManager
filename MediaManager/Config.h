@@ -4,7 +4,8 @@
 #include "MathHelper.h"
 #include "defines.h"
 
-enum class ImageType {
+enum class ImageType
+{
 	Poster,
 	Still
 };
@@ -25,62 +26,78 @@ public:
 	inline static bool use_large_images = mm_DEFAULT_USE_LARGE_IMAGES;
 	inline static bool show_sublabels = mm_DEFAULT_SHOW_SUBLABELS;
 
-	inline static std::vector<std::string> supported_file_formats = 
-		{ ".mkv", ".mp4", ".avi", ".mov", ".m4v", ".m4p", ".flv", ".m4v", ".f4v", ".f4p", ".f4a", 
-			".f4b", ".webm", ".vob", ".ogv", ".ogg", ".mts", ".m2ts", ".ts", ".qt",".wmv", ".rm", 
-			".rmvb", ".viv", ".asf", ".amv", ".mpg", ".mpeg", ".mp2", ".mpv", ".mpe", ".m2v" };
+	inline static std::vector<std::string> supported_file_formats =
+		{".mkv", ".mp4", ".avi", ".mov", ".m4v", ".m4p", ".flv", ".m4v", ".f4v", ".f4p", ".f4a",
+		 ".f4b", ".webm", ".vob", ".ogv", ".ogg", ".mts", ".m2ts", ".ts", ".qt", ".wmv", ".rm",
+		 ".rmvb", ".viv", ".asf", ".amv", ".mpg", ".mpeg", ".mp2", ".mpv", ".mpe", ".m2v"};
 
-	static void Init(std::string new_config_file_path) {
+	static void Init(std::string new_config_file_path)
+	{
 		initialized = true;
 		config_file_path = new_config_file_path;
 	}
 
 	inline static bool IsInitialized() { return initialized; }
-	inline static std::string GetImageSize(ImageType type) {
+	inline static std::string GetImageSize(ImageType type)
+	{
 
-		if (type == ImageType::Poster) 
-			return use_large_images ? 
-			 mm_TMDB__IMAGE_SIZE_POSTER_LARGE : mm_TMDB__IMAGE_SIZE;
+		if (type == ImageType::Poster)
+			return use_large_images ? mm_TMDB__IMAGE_SIZE_POSTER_LARGE : mm_TMDB__IMAGE_SIZE;
 
-		if(type == ImageType::Still)
-			return use_large_images ?
-			mm_TMDB__IMAGE_SIZE_STILL_LARGE : mm_TMDB__IMAGE_SIZE;
+		if (type == ImageType::Still)
+			return use_large_images ? mm_TMDB__IMAGE_SIZE_STILL_LARGE : mm_TMDB__IMAGE_SIZE;
 
 		return mm_TMDB__IMAGE_SIZE;
 	}
-	
-	static std::vector<std::string> GetMoviePaths() {
+
+	static std::vector<std::string> GetMoviePaths()
+	{
 		std::string paths = Config::movie_folders;
-		if (paths[paths.size() - 1] == ';') paths = paths.substr(0, paths.size() - 1);
+		if (paths.size() == 0)
+		{
+			std::vector<std::string> empty;
+			return empty;
+		}
+
+		if (paths[paths.size() - 1] == ';')
+			paths = paths.substr(0, paths.size() - 1);
 		return SplitPaths(paths);
 	}
 
-	static std::vector<std::string> GetTVPaths() {
+	static std::vector<std::string> GetTVPaths()
+	{
 		std::string paths = Config::tv_folders;
-		if (paths[paths.size() - 1] == ';') paths = paths.substr(0, paths.size() - 1);
+		if (paths.size() == 0)
+		{
+			std::vector<std::string> empty;
+			return empty;
+		}
+		if (paths[paths.size() - 1] == ';')
+			paths = paths.substr(0, paths.size() - 1);
 		return SplitPaths(paths);
 	}
 
 	static void SaveConfigToDisk();
 	static bool LoadConfigFromDisk();
 
-
 private:
 	inline static std::string config_file_path;
 	inline static bool initialized;
 
-	static void SerializeJSON(nlohmann::json& json);
-	static void DeserializeJSON(const nlohmann::json& json);
+	static void SerializeJSON(nlohmann::json &json);
+	static void DeserializeJSON(const nlohmann::json &json);
 	/// <summary>
 	/// Limits all values to certain safe ranges
 	/// </summary>
 	static void FilterValues();
 
-	static std::vector<std::string> SplitPaths(std::string paths) {
+	static std::vector<std::string> SplitPaths(std::string paths)
+	{
 		std::vector<std::string> returnable;
 
 		int last_cut = 0;
-		for (uint32_t i = 0; i < paths.size(); i++) {
+		for (uint32_t i = 0; i < paths.size(); i++)
+		{
 
 			std::string path;
 
@@ -90,8 +107,8 @@ private:
 			if (i == paths.size() - 1)
 				path = paths.substr(last_cut, i - last_cut + 1);
 
-
-			if (path.size() > 0) {
+			if (path.size() > 0)
+			{
 				if (FsHelpers::PathExists(path))
 					returnable.push_back(path);
 
@@ -102,4 +119,3 @@ private:
 		return returnable;
 	}
 };
-
